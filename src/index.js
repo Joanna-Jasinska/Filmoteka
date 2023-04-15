@@ -1,6 +1,6 @@
-import "./sass/main.scss";
+import './sass/main.scss';
 
-import { showLoader, removeLoader, initLoader } from "./loader";
+import { showLoader, removeLoader, initLoader } from './js/loader';
 
 initLoader();
 
@@ -9,5 +9,5 @@ showLoader();
 
 // spełnienie promise/pobranie danych  z serwera(tutaj zastąpione timeoutem)>>>
 setTimeout(() => {
-	removeLoader();
+  removeLoader();
 }, 2000);
