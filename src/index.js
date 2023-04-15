@@ -1,5 +1,5 @@
 import './sass/main.scss';
-import { fetchPopular } from './fetch';
+import { fetchPopular } from './js/fetch';
 import { showLoader, removeLoader, initLoader } from './js/loader';
 
 initLoader();
@@ -11,7 +11,6 @@ showLoader();
 setTimeout(() => {
   removeLoader();
 }, 2000);
-
 
 fetchPopular()
   .then(popularMovies => console.log(popularMovies))
