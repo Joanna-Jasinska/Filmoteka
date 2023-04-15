@@ -5,7 +5,7 @@
   "homepage": "https://github.com/Joanna-Jasinska/Filmoteka",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url Filmoteka"
+    "build": "parcel build src/*.html --public-url /Filmoteka/"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,8 @@
     "@parcel/transformer-sass": "^2.8.3",
     "parcel": "^2.8.3",
     "posthtml-include": "^1.7.4"
+  },
+  "dependencies": {
+    "notiflix": "^3.2.6"
   }
 }
