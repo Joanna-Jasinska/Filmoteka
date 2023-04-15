@@ -5,7 +5,7 @@
   "homepage": "https://github.com/Joanna-Jasinska/Filmoteka",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url Filmoteka"
+    "build": "parcel build src/*.html --public-url /Filmoteka/"
   },
   "repository": {
     "type": "git",
