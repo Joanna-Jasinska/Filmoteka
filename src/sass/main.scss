@@ -2,6 +2,10 @@
  * Główny plik dla stylów.
  * Wszystkie partials podłączamy tutaj.
  */
+/* Components */
+@import './components/variables';
+@import './components/container';
+@import './components/body';
 
-// Style dla pliku z przykładem HTML fragmentu
-@import './example';
+/* Partials */
+@import './partials/header';
