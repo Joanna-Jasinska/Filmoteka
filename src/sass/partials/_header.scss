@@ -58,7 +58,7 @@
 .navigation {
   display: flex;
   gap: 40px;
-  font-family: Roboto;
+  font-family: $main-font;
   font-size: 12px;
   font-weight: 500;
   line-height: 14px;
@@ -69,5 +69,51 @@
   &-link:visited {
     text-decoration: none;
     color: $main-white;
+  }
+}
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 92px;
+  @include tablet {
+    padding-bottom: 81px;
+  }
+  @include desktop {
+    padding-bottom: 80px;
+  }
+
+  &--button {
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    display: block;
+    top: -3px;
+    left: -13px;
+    background: none;
+    border: none;
+    outline: none;
+    &-box {
+      position: relative;
+    }
+  }
+  &--input {
+    background: none;
+    font-family: $main-font;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+    outline: none;
+    border: none;
+    border-bottom: 0.5px solid #ffffff;
+    width: 280px;
+    @include tablet {
+      width: 336px;
+    }
+    @include desktop {
+      width: 394px;
+    }
   }
 }

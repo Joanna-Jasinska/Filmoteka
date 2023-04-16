@@ -1,16 +1,34 @@
 <div class="header">
-  <div class="container header-box">
-    <div class="header-logo">
-      <svg class="film-icon">
-        <use href="./images/icons.svg#icon-film"></use>
-      </svg>
-      <p class="header-logo__text">Filmoteka</p>
+  <div class="container">
+    <div class="header-box">
+      <div class="header-logo">
+        <svg class="film-icon">
+          <use href="./images/icons.svg#icon-film"></use>
+        </svg>
+        <p class="header-logo__text">Filmoteka</p>
+      </div>
+      <ul class="navigation list">
+        <li class="navigation-element">
+          <a class="navigation-link" href="./">HOME</a>
+        </li>
+        <li class="navigation-element"><a class="navigation-link" href="./">MY LIBRARY</a></li>
+      </ul>
     </div>
-    <ul class="navigation list">
-      <li class="navigation-element">
-        <a class="navigation-link" href="./">HOME</a>
-      </li>
-      <li class="navigation-element"><a class="navigation-link" href="./">MY LIBRARY</a></li>
-    </ul>
+    <form class="search-form" id="search-form">
+      <input
+        class="search-form--input"
+        type="text"
+        name="searchForm"
+        autocomplete="off"
+        placeholder="Movie search"
+      />
+      <div class="search-form--button-box">
+        <button type="submit" class="search-form--button">
+          <svg class="search-icon" type="button">
+            <use href="./images/icons.svg#icon-search"></use>
+          </svg>
+        </button>
+      </div>
+    </form>
   </div>
 </div>
