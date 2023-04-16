@@ -21,4 +21,53 @@
   @include desktop-retina {
     background-image: $header-overlay, url('../images/main-background-desktop@2x.png');
   }
+  &-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 54px;
+    @include tablet {
+      padding-bottom: 40px;
+    }
+    @include desktop {
+      padding-bottom: 41px;
+    }
+  }
+  &-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    @include desktop {
+      gap: 10px;
+    }
+    &__text {
+      display: none;
+      @include tablet {
+        display: inline;
+        font-family: $main-font;
+        font-size: 30px;
+        font-weight: 500;
+        line-height: 35px;
+        letter-spacing: 0em;
+        text-align: center;
+      }
+    }
+  }
+}
+.navigation {
+  display: flex;
+  gap: 40px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: center;
+  &-link,
+  &-link:active,
+  &-link:visited {
+    text-decoration: none;
+    color: $main-white;
+  }
 }
