@@ -4,8 +4,11 @@
  */
 /* Components */
 @import './components/variables';
-@import './components/container';
 @import './components/body';
+@import './components/container';
+@import './components/base';
+@import './components/icons';
 
 /* Partials */
 @import './partials/header';
+@import './partials/footer';

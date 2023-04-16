@@ -1,0 +1,13 @@
+.film-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.heart-icon {
+  width: 14px;
+  height: 12.75px;
+  fill: $main-orange;
+  @include tablet {
+    height: 12.88px;
+  }
+}

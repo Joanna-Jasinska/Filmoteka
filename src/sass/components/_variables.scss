@@ -7,14 +7,20 @@ $main-black: #000000; /* basic black font and details color   */
 $main-white: #ffffff; /* basic white font and details color, base backgroung */
 $main-red: #ff001b; /* basic red font color for alerts and underline*/
 $orange-button: #ff6b01; /* watched ative page button, movie rating  */
+$footer-gray: #545454; /* footer font color */
 
 /* ---background--- */
 
 $footer-background: #f7f7f7;
-$header-overlay: rgba(0, 0, 0, 0.56);
+$header-overlay: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
 $film-card-modal-overlay: rgba(0, 0, 0, 1);
 
 /* ------MIXIN------ */
+@mixin mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
 @mixin mobile-retina {
   @media (max-width: 767px),
     (min-device-pixel-ratio: 2),
