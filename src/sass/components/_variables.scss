@@ -1,0 +1,51 @@
+/* ------FONTS------- */
+$main-font: 'Roboto', sans-serif;
+
+/* ------COLORS------ */
+$main-orange: #ff6b08; /* type of movie, year of production, active page number, heart,  */
+$main-black: #000000; /* basic black font and details color   */
+$main-white: #ffffff; /* basic white font and details color, base backgroung */
+$main-red: #ff001b; /* basic red font color for alerts and underline*/
+$orange-button: #ff6b01; /* watched ative page button, movie rating  */
+
+/* ---background--- */
+
+$footer-background: #f7f7f7;
+$header-overlay: rgba(0, 0, 0, 0.56);
+$film-card-modal-overlay: rgba(0, 0, 0, 1);
+
+/* ------MIXIN------ */
+@mixin mobile-retina {
+  @media (max-width: 767px),
+    (min-device-pixel-ratio: 2),
+    (min-resolution: 2dppx),
+    (min-resolution: 192dpi) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+@mixin tablet-retina {
+  @media (min-width: 768px),
+    (min-device-pixel-ratio: 2),
+    (min-resolution: 2dppx),
+    (min-resolution: 192dpi) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+@mixin desktop-retina {
+  @media (min-width: 1280px),
+    (min-device-pixel-ratio: 2),
+    (min-resolution: 2dppx),
+    (min-resolution: 192dpi) {
+    @content;
+  }
+}
