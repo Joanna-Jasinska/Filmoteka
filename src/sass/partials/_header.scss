@@ -1,0 +1,24 @@
+.header {
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  background-clip: padding-box;
+  background-position: center;
+  background-color: $background-blueish;
+  background-image: $header-overlay, url('.../images/main-background-mobile.png');
+  @include mobile-retina {
+    background-image: $header-overlay, url('.../images/main-background-mobile@2x.png');
+  }
+  @include tablet {
+    background-image: $header-overlay, url('.../images/main-background-tablet.png');
+  }
+  @include tablet-retina {
+    background-image: $header-overlay, url('.../images/main-background-tablet@2x.png');
+  }
+  @include desktop {
+    background-image: $header-overlay, url('.../images/main-background-desktop.png');
+  }
+  @include desktop-retina {
+    background-image: $header-overlay, url('.../images/main-background-desktop@2x.png');
+  }
+}
