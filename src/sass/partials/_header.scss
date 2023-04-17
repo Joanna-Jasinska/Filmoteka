@@ -43,6 +43,8 @@
     }
     &__text {
       display: none;
+      margin-top: 0px;
+      margin-bottom: 0px;
       @include tablet {
         display: inline;
         font-family: $main-font;
@@ -64,6 +66,9 @@
   line-height: 14px;
   letter-spacing: 0em;
   text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
   &-link,
   &-link:active,
   &-link:visited {
