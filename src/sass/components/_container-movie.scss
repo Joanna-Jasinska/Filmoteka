@@ -1,14 +1,19 @@
 .container-movies {
-  padding: 0 20px;
-  margin: 0 auto;
-  min-width: 320px;
-
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 20px;
   @include tablet {
-    padding: 0 32px;
-    max-width: 768px;
+    gap: 32px;
+  }
+}
+.movie-card {
+  width: 280px;
+  @include tablet {
+    width: 336px;
   }
   @include desktop {
-    padding: 0 32px;
-    max-width: 1280px;
+    gap: 16px;
+    row-gap: 32px;
+    width: 394px;
   }
 }

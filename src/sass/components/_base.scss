@@ -1,3 +1,9 @@
 .list {
   list-style: none;
 }
+.link,
+.link:active,
+.link:visited {
+  text-decoration: none;
+  color: $main-white;
+}

@@ -1,4 +1,47 @@
 .footer {
   background-color: $footer-background;
   color: $footer-gray;
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+   &-list {
+    margin: 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 9px;
+    padding-top: 28.71px;
+    padding-bottom: 29.7px;
+    font-family: $main-font;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: center;
+    max-width: 275px;
+    padding-inline: 0px;
+    @include tablet {
+      font-size: 16px;
+      line-height: 19px;
+      flex-wrap: nowrap;
+      max-width: 550px;
+      padding-block: 30px;
+      @include desktop {
+        paddind-top: 30px;
+        padding-bottom: 28px;
+      }
+    }
+  }
+  &-element {
+    display: flex;
+    align-items: center;
+    &__paragraph {
+      padding: 0 0;
+      margin: 0 0;
+    }
+  }
+  &-highlight {
+    text-decoration: underline;
+  }
 }

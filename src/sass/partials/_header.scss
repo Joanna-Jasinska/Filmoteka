@@ -4,13 +4,15 @@
   height: 100%;
   background-clip: padding-box;
   background-position: center;
-  background-color: $main-black;
+  background-color: $main-white;
   background-image: $header-overlay, url('../images/main-background-mobile.png');
+  margin-bottom: 20px;
   @include mobile-retina {
     background-image: $header-overlay, url('../images/main-background-mobile@2x.png');
   }
   @include tablet {
     background-image: $header-overlay, url('../images/main-background-tablet.png');
+    margin-bottom: 60px;
   }
   @include tablet-retina {
     background-image: $header-overlay, url('../images/main-background-tablet@2x.png');
@@ -20,6 +22,32 @@
   }
   @include desktop-retina {
     background-image: $header-overlay, url('../images/main-background-desktop@2x.png');
+  }
+  &-library {
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    background-clip: padding-box;
+    background-position: center;
+    background-color: $main-white;
+    background-image: $header-overlay, url('../images/watched-page-mobile.png');
+    margin-bottom: 20px;
+    @include mobile-retina {
+      background-image: $header-overlay, url('../images/watched-page-mobile@2x.png');
+    }
+    @include tablet {
+      background-image: $header-overlay, url('../images/watched-page-tablet.png');
+      margin-bottom: 60px;
+    }
+    @include tablet-retina {
+      background-image: $header-overlay, url('../images/watched-page-tablet@x2.png');
+    }
+    @include desktop {
+      background-image: $header-overlay, url('../images/watched-page-desktop.png');
+    }
+    @include desktop-retina {
+      background-image: $header-overlay, url('../images/watched-page-desktop@2x.png');
+    }
   }
   &-box {
     display: flex;
@@ -33,6 +61,15 @@
     @include desktop {
       padding-bottom: 41px;
     }
+    &__library {
+      padding-bottom: 60px;
+      @include tablet {
+        padding-bottom: 40px;
+      }
+      @include desktop {
+        padding-bottom: 40px;
+      }
+    }
   }
   &-logo {
     display: flex;
@@ -43,6 +80,8 @@
     }
     &__text {
       display: none;
+      margin-top: 0px;
+      margin-bottom: 0px;
       @include tablet {
         display: inline;
         font-family: $main-font;
@@ -52,6 +91,45 @@
         letter-spacing: 0em;
         text-align: center;
       }
+    }
+  }
+  &-buttons-box {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 62px;
+    gap: 19.94px;
+    @include tablet {
+      padding-bottom: 60px;
+      gap: 16px;
+    }
+  }
+  &-button {
+    width: 129.53px;
+    height: 44px;
+    background: none;
+    color: $main-white;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    border: 1px solid $main-white;
+    border-radius: 5px;
+    @include tablet {
+      width: 152px;
+    }
+    @include desktop {
+      width: 148px;
+      height: 42px;
+    }
+    &.is-active {
+      border-color: $main-orange;
+      background: solid;
+      background-color: $main-orange;
     }
   }
 }
@@ -64,13 +142,20 @@
   line-height: 14px;
   letter-spacing: 0em;
   text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
   &-link,
   &-link:active,
   &-link:visited {
     text-decoration: none;
     color: $main-white;
   }
+  &-element {
+    position: relative;
+  }
 }
+
 .search-form {
   display: flex;
   justify-content: center;
@@ -115,5 +200,26 @@
     @include desktop {
       width: 394px;
     }
+  }
+}
+.highlight {
+  &__home::after {
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: $main-red;
+    border: 1px;
+    height: 3px;
+    bottom: -1px;
+    width: 34px;
+  }
+  &__library::after {
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: $main-red;
+    height: 3px;
+    bottom: -1px;
+    width: 69px;
   }
 }
