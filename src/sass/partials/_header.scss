@@ -70,7 +70,11 @@
     text-decoration: none;
     color: $main-white;
   }
+  &-element {
+    position: relative;
+  }
 }
+
 .search-form {
   display: flex;
   justify-content: center;
@@ -115,5 +119,26 @@
     @include desktop {
       width: 394px;
     }
+  }
+}
+.highlight {
+  &__home::after {
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: $main-red;
+    border: 1px;
+    height: 3px;
+    bottom: -1px;
+    width: 34px;
+  }
+  &__library::after {
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: $main-red;
+    height: 3px;
+    bottom: -1px;
+    width: 69px;
   }
 }
