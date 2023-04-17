@@ -1,6 +1,7 @@
-import "./sass/main.scss";
-import { fetchPopular } from "./js/fetch";
-import { removeLoader, initLoader } from "./js/loader";
+import './sass/main.scss';
+import { fetchPopular } from './js/fetch';
+import { removeLoader, initLoader } from './js/loader';
+import { displayMovies } from './js/search';
 
 initLoader();
 
@@ -13,8 +14,12 @@ initLoader();
 // }, 2000);
 
 fetchPopular()
-	.then((popularMovies) => console.log(popularMovies))
-	.catch((error) => console.error(error))
-	.finally(() => {
-		removeLoader();
-	});
+  .then(popularMovies => {
+    console.log(popularMovies.results);
+    const movies = popularMovies.results;
+    displayMovies(movies);
+  })
+  .catch(error => console.error(error))
+  .finally(() => {
+    removeLoader();
+  });
