@@ -1,6 +1,6 @@
 //pozniej komentarze zmienie na angielski
 
-//zalozenia : w HTML wystepuje: <search-input> do wpisania slowa kluczowego, najlepiej od razu z placeholderem o treści "search for a movie";<search-button> przycisk do wyszukiwania ; <movies-container> do wyswietlania znalezionych filmow
+
 
 const API_KEY = '3453ae595a5d53cbc877c6d05de8a002'; // mój klucz API z themoviedb.org
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -38,7 +38,7 @@ export function displayMovies(movies) {
 
 async function handleSearch(event) {
   event.preventDefault();
-  const searchInput = document.getElementById('search-input');
+  const searchInput = document.getElementById('.search-form--input');
   const query = searchInput.value;
   if (!query) return;
   const movies = await searchMovies(query);
