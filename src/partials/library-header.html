@@ -1,6 +1,6 @@
-<div class="header">
+<div class="header-library">
   <div class="container">
-    <div class="header-box">
+    <div class="header-box header-box__library">
       <div class="header-logo">
         <a class="link" href="/src/index.html"
           ><svg class="film-icon">
@@ -18,21 +18,9 @@
         </li>
       </ul>
     </div>
-    <form class="search-form" id="search-form">
-      <input
-        class="search-form--input"
-        type="text"
-        name="searchForm"
-        autocomplete="off"
-        placeholder="Movie search"
-      />
-      <div class="search-form--button-box">
-        <button type="submit" class="search-form--button">
-          <svg class="search-icon" type="button">
-            <use href="./images/icons.svg#icon-search"></use>
-          </svg>
-        </button>
-      </div>
-    </form>
+    <div class="header-buttons-box">
+      <button class="header-button is-active" id="watched-btn">Watched</button>
+      <button class="header-button" id="queue-btn">Queue</button>
+    </div>
   </div>
 </div>
