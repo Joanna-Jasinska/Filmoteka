@@ -1,6 +1,6 @@
 //pozniej komentarze zmienie na angielski
 
-//zalozenia : w HTML wystepuje: <search-input> do wpisania slowa kluczowego, najlepiej od razu z placeholderem o treści "search for a movie";<search-button> przycisk do wyszukiwania ; <movies-container> do wyswietlania znalezionych filmow 
+//zalozenia : w HTML wystepuje: <search-input> do wpisania slowa kluczowego, najlepiej od razu z placeholderem o treści "search for a movie";<search-button> przycisk do wyszukiwania ; <movies-container> do wyswietlania znalezionych filmow
 
 const API_KEY = '3453ae595a5d53cbc877c6d05de8a002'; // mój klucz API z themoviedb.org
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -18,13 +18,13 @@ async function searchMovies(query) {
 
 // funkcja wyświetlająca filmy na stronie , do podmiany/korekty/ dostosowania z FT07 -Zaimplementować przesyłanie popularnych filmów na główną (pierwszą) stronę
 
-function displayMovies(movies) {
+export function displayMovies(movies) {
   const moviesContainer = document.getElementById('movies-container');
   moviesContainer.innerHTML = '';
-  movies.forEach((movie) => {
+  movies.forEach(movie => {
     const movieCard = `
       <div class="movie-card">
-        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" width="395" height="574">
         <h2>${movie.title}</h2>
         <p>${movie.release_date}</p>
         <p>${movie.overview}</p>
@@ -46,5 +46,5 @@ async function handleSearch(event) {
 }
 
 // nasłuchiwanie na kliknięcie buttona "Search"
-const searchButton = document.getElementById('search-button');
+const searchButton = document.querySelector('.search-form--button');
 searchButton.addEventListener('click', handleSearch);
