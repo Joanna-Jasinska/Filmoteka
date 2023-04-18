@@ -1,7 +1,5 @@
 //pozniej komentarze zmienie na angielski
 
-
-
 const API_KEY = '3453ae595a5d53cbc877c6d05de8a002'; // mój klucz API z themoviedb.org
 const BASE_URL = 'https://api.themoviedb.org/3';
 
@@ -23,7 +21,7 @@ export function displayMovies(movies) {
   moviesContainer.innerHTML = '';
   movies.forEach(movie => {
     const movieCard = `
-      <div class="movie-card">
+      <div class="movie-card" data-modal-open>
         <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" width="395" height="574">
         <h2>${movie.title}</h2>
         <p>${movie.release_date}</p>

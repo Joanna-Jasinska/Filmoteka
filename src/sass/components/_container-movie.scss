@@ -7,6 +7,7 @@
   }
 }
 .movie-card {
+  cursor: pointer;
   width: 280px;
   @include tablet {
     width: 336px;

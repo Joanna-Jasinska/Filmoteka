@@ -1,0 +1,34 @@
+.modal {
+  width: 310px;
+  height: 640px;
+  background-color: #ffffff;
+  margin: auto;
+  position: relative;
+}
+
+.close-btn {
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  cursor: pointer;
+  right: 10px;
+  top: 10px;
+  position: absolute;
+}
+
+// .is-hidden {
+//   opacity: 0;
+//   visibility: hidden;
+//   transform: translateX(-100%);
+// }
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+}
