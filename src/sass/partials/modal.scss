@@ -18,11 +18,11 @@
   position: absolute;
 }
 
-// .is-hidden {
-//   opacity: 0;
-//   visibility: hidden;
-//   transform: translateX(-100%);
-// }
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-100%);
+}
 .backdrop {
   position: fixed;
   left: 0;
