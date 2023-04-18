@@ -1,0 +1,90 @@
+.movies-gallery {
+  display: flex;
+  gap: 100px;
+  flex-wrap: wrap;
+  gap: 20px 175px;
+  justify-content: center;
+  margin-bottom: 40px;
+  @include tablet {
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-bottom: 60px;
+  }
+  @include desktop {
+    gap: 16px;
+    row-gap: 32px;
+  }
+}
+.movie-card {
+  color: $main-black;
+  width: 280px;
+  border-radius: 5px;
+  overflow: hidden;
+  @include tablet {
+    width: 336px;
+  }
+  @include desktop {
+    width: 394px;
+  }
+  &__image {
+    width: 280px;
+    height: 398px;
+    border-radius: 5px;
+    @include tablet {
+      width: 336px;
+      height: 455px;
+    }
+    @include desktop {
+      width: 395px;
+      height: 574px;
+    }
+  }
+  &__tittle {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-family: $main-font;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+    @include tablet {
+      margin-top: 8px;
+      line-height: 16px;
+    }
+    @include desktop {
+      margin-top: 12px;
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+  &__info {
+    color: $main-orange;
+    margin: 0 0;
+    font-family: $main-font;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    @include tablet {
+      line-height: 16px;
+    }
+  }
+  @include desktop {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  &__rating {
+    background-color: $main-orange;
+    border-radius: 5px;
+    width: 36px;
+    height: 16px;
+    font-size: 12px;
+    line-height: 14px;
+    color: $main-white;
+    @include desktop {
+      width: 40px;
+      height: 20px;
+    }
+  }
+}

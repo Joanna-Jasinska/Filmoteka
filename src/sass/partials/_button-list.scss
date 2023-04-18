@@ -1,0 +1,32 @@
+.button-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0;
+  justify-content: center;
+  &__button {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background: none;
+    color: $main-black;
+    font-family: $main-font;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0;
+  }
+  &__button-arrows {
+    background-color: $footer-background;
+    display: flex;
+  }
+  &__button-active {
+    background-color: $main-orange;
+    color: $main-white;
+  }
+}
