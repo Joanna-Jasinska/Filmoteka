@@ -1,0 +1,39 @@
+.movies-gallery {
+  display: flex;
+  gap: 100px;
+  flex-wrap: wrap;
+  gap: 20px 175px;
+  justify-content: center;
+  @include tablet {
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+  @include desktop {
+    gap: 16px;
+    row-gap: 32px;
+  }
+}
+.movie-card {
+  width: 280px;
+  border-radius: 5px;
+  overflow: hidden;
+  @include tablet {
+    width: 336px;
+  }
+  @include desktop {
+    width: 394px;
+  }
+  &__image {
+    width: 280px;
+    height: 398px;
+    border-radius: 5px;
+    @include tablet {
+      width: 336px;
+      height: 455px;
+    }
+    @include desktop {
+      width: 395px;
+      height: 574px;
+    }
+  }
+}
