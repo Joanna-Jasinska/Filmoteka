@@ -22,7 +22,6 @@ async function searchMovies(query) {
 // funkcja wyświetlająca filmy na stronie , do podmiany/korekty/ dostosowania z FT07 -Zaimplementować przesyłanie popularnych filmów na główną (pierwszą) stronę
 
 export function displayMovies(movies) {
-	console.log(movies);
 	const moviesContainer = document.getElementById("movies-container");
 	moviesContainer.innerHTML = "";
 	movies.forEach((movie) => {
@@ -33,7 +32,6 @@ export function displayMovies(movies) {
           <p>${movie.release_date}</p>
           <p>${movie.overview}</p>
         </div>`;
-
 		moviesContainer.insertAdjacentHTML("beforeend", movieCard);
 	});
 	moviesContainer.addEventListener("click", (e) => {

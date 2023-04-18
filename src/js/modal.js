@@ -4,16 +4,11 @@ const refs = {
 	closeModal: document.querySelector("[data-modal-close]"),
 	backdrop: document.querySelector(".backdrop"),
 };
-for (ref in refs) {
-	console.log(ref);
-}
 
-// refs.openModal.addEventListener("click", toggleModal);
 refs.closeModal.addEventListener("click", toggleModal);
 
 export function toggleModal() {
 	refs.backdrop.classList.toggle("is-hidden");
-	console.log("toggle backdrop");
 }
 
 export const fetchMovieId = async (movie_id) => {
@@ -22,7 +17,6 @@ export const fetchMovieId = async (movie_id) => {
 			`https://api.themoviedb.org/3/movie/${movie_id}?api_key=964358699754c21d74c014b561cf196c&language=en-US`,
 		);
 		const movie = await response.json();
-		console.log(movie);
 		return movie;
 	} catch (error) {
 		console.log(error);
