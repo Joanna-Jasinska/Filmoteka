@@ -39,12 +39,12 @@ export function displayMovies(movies) {
 	moviesContainer.addEventListener("click", (e) => {
 		console.log(e.target.tagName);
 		if (e.target.tagName === "IMG") {
+			console.log(e.target.dataset.id);
 			showLoader();
 			toggleModal();
-			fetchMovieId(594767).then((movie) => {
+			fetchMovieId(e.target.dataset.id).then((movie) => {
 				renderModal(movie);
 				removeLoader();
-				// console.log(markup);
 			});
 		}
 	});
