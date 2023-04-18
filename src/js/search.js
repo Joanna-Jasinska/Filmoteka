@@ -1,5 +1,4 @@
 
-
 const API_KEY = '3453ae595a5d53cbc877c6d05de8a002'; // mój klucz API z themoviedb.org
 const BASE_URL = 'https://api.themoviedb.org/3';
 
@@ -24,19 +23,26 @@ async function getGenres(movieId) {
 
 // export?
 
-  function displayMovies(movies) {
-  const moviesContainer = document.getElementById('movies-container');
+export function displayMovies(movies) {
+  const moviesContainer = document.getElementById('movies-gallery');
+
+  
+  
   moviesContainer.innerHTML = '';
   movies.forEach(async (movie) => {
     const genres = await getGenres(movie.id);
     const genreNames = genres.map((genre) => genre.name).join(', ');
     const movieCard = `
       <div class="movie-card">
-        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-        <h2>${movie.title}</h2>
-        <p>${movie.release_date}</p>
-        <p>Genres: ${genreNames}</p>
-        
+      
+
+        <img class=“movie-card__image” src=“https://image.tmdb.org/t/p/w500${movie.poster_path}” alt=“${movie.title}” width=“395" height=“574”>
+        <h2 class=“movie-card__tittle”>${movie.title}</h2>
+        <p class=“movie-card__info”>
+        <span class=“movie-card__overview”>Genres: ${genreNames}</span> | <span class=“movie-card__realease-date”>${movie.release_date}</span>
+        </p>
+
+
       </div>
     `;
     moviesContainer.insertAdjacentHTML('beforeend', movieCard);
