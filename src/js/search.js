@@ -1,6 +1,6 @@
 import { toggleModal, fetchMovieId, renderModal } from './modal';
 import { showLoader, removeLoader } from './loader';
-
+import { showModal } from './modal';
 //pozniej komentarze zmienie na angielski
 
 const API_KEY = '3453ae595a5d53cbc877c6d05de8a002'; // mój klucz API z themoviedb.org
@@ -28,12 +28,12 @@ async function getGenres(movieId) {
 export function displayMovies(movies) {
   const moviesContainer = document.getElementById('movies-gallery');
   moviesContainer.innerHTML = '';
-  movies.forEach(async(movie) => {
+  movies.forEach(async movie => {
     const genres = await getGenres(movie.id);
-    const genreNames = genres.map((genre) => genre.name).join(', ');
+    const genreNames = genres.map(genre => genre.name).join(', ');
     const movieCard = `
       <div class="movie-card">
-        <img class="movie-card__image" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" width="395" height="574">
+        <img data-id=${movie.id} class="movie-card__image" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" width="395" height="574">
         <h2 class="movie-card__tittle">${movie.title}</h2>
         <p class="movie-card__info"> 
         <span class="movie-card__overview">Genres:${genreNames}</span> | <span class="movie-card__realease-date">${movie.release_date}</span></p>
@@ -42,18 +42,15 @@ export function displayMovies(movies) {
     moviesContainer.insertAdjacentHTML('beforeend', movieCard);
   });
   moviesContainer.addEventListener('click', e => {
-    console.log(e.target.tagName);
     if (e.target.tagName === 'IMG') {
-      console.log(e.target.dataset.id);
       showLoader();
-      toggleModal();
+      showModal();
       fetchMovieId(e.target.dataset.id).then(movie => {
         renderModal(movie);
         removeLoader();
       });
     }
   });
-  renderModal.innerHTML = '';
 }
 
 // funkcja obsługująca wyszukiwanie po kliknięciu przycisku, do weryfikacji nazwy przycisku jak bedzie html

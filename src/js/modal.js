@@ -5,22 +5,30 @@ const refs = {
   backdrop: document.querySelector('.backdrop'),
 };
 
-refs.closeModal.addEventListener('click', toggleModal);
+refs.closeModal.addEventListener('click', () => {
+  removeModal();
+  renderModal.innerHTML = '';
+});
 
-refs.modal.addEventListener('keydown', () => {
-  if (key === 'Escape') {
-    toggleModal();
+window.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    removeModal();
+    renderModal.innerHTML = '';
   }
 });
 
 window.addEventListener('click', e => {
-  if (!e.target === refs.modal) {
-    toggleModal();
+  if (e.target === refs.backdrop) {
+    removeModal();
+    renderModal.innerHTML = '';
   }
 });
 
-export function toggleModal() {
-  refs.backdrop.classList.toggle('is-hidden');
+export function showModal() {
+  refs.backdrop.classList.remove('is-hidden');
+}
+function removeModal() {
+  refs.backdrop.classList.add('is-hidden');
 }
 
 export const fetchMovieId = async movie_id => {
@@ -38,7 +46,7 @@ export const renderModal = movie => {
   const modalMarkup = `<div class="movie-details">
   <img
     class="movie-details__image"
-    src="https://image.tmdb.org/t/p/w500${movie.backdrop_path}"
+    src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
   />
   <h2 class="movie-details__title">${movie.title}</h2>
   <ul class="movie-details__list">
