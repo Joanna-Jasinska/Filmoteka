@@ -1,4 +1,11 @@
+
+import { showModal, fetchMovieById, renderModal } from './modal';
+import { showLoader, removeLoader } from './loader';
+
+//pozniej komentarze zmienie na angielski
+
 const API_KEY = '3453ae595a5d53cbc877c6d05de8a002'; 
+
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 async function searchMovies(query) {
@@ -22,18 +29,28 @@ async function getGenres(movieId) {
 export function displayMovies(movies) {
   const moviesContainer = document.getElementById('movies-gallery');
   moviesContainer.innerHTML = '';
-  movies.forEach(async(movie) => {
+  movies.forEach(async movie => {
     const genres = await getGenres(movie.id);
-    const genreNames = genres.map((genre) => genre.name).join(', ');
+    const genreNames = genres.map(genre => genre.name).join(', ');
     const movieCard = `
       <div class="movie-card">
-        <img class="movie-card__image" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" width="395" height="574">
+        <img data-id=${movie.id} class="movie-card__image" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" width="395" height="574">
         <h2 class="movie-card__tittle">${movie.title}</h2>
         <p class="movie-card__info"> 
         <span class="movie-card__overview">Genres:${genreNames}</span> | <span class="movie-card__realease-date">${movie.release_date}</span></p>
       </div>
     `;
     moviesContainer.insertAdjacentHTML('beforeend', movieCard);
+  });
+  moviesContainer.addEventListener('click', e => {
+    if (e.target.tagName === 'IMG') {
+      showLoader();
+      showModal();
+      fetchMovieById(e.target.dataset.id).then(movie => {
+        renderModal(movie);
+        removeLoader();
+      });
+    }
   });
 }
 
@@ -42,6 +59,7 @@ async function handleSearch(event) {
   const searchInput = document.querySelector('.search-form--input');
   const query = searchInput.value;
   if (!query) return;
+
   const movies = await searchMovies(query);
   displayMovies(movies);
 }
