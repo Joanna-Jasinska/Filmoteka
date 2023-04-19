@@ -17,20 +17,28 @@ async function searchMovies(query) {
   }
 }
 
+async function getGenres(movieId) {
+  const response = await fetch(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`);
+  const data = await response.json();
+  return data.genres;
+}
+
 // funkcja wyświetlająca filmy na stronie , do podmiany/korekty/ dostosowania z FT07 -Zaimplementować przesyłanie popularnych filmów na główną (pierwszą) stronę
 
 export function displayMovies(movies) {
   const moviesContainer = document.getElementById('movies-gallery');
   moviesContainer.innerHTML = '';
-  movies.forEach(movie => {
+  movies.forEach(async(movie) => {
+    const genres = await getGenres(movie.id);
+    const genreNames = genres.map((genre) => genre.name).join(', ');
     const movieCard = `
-<div class="movie-card">
-<img data-id=${movie.id} src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" width="395" height="574">
-<h2>${movie.title}</h2>
-<p>${movie.release_date}</p>
-<p>${movie.overview}</p>
-</div>
-`;
+      <div class="movie-card">
+        <img class="movie-card__image" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" width="395" height="574">
+        <h2 class="movie-card__tittle">${movie.title}</h2>
+        <p class="movie-card__info"> 
+        <span class="movie-card__overview">Genres:${genreNames}</span> | <span class="movie-card__realease-date">${movie.release_date}</span></p>
+      </div>
+    `;
     moviesContainer.insertAdjacentHTML('beforeend', movieCard);
   });
   moviesContainer.addEventListener('click', e => {
