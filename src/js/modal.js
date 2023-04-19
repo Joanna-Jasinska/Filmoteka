@@ -31,7 +31,7 @@ function removeModal() {
   refs.backdrop.classList.add('is-hidden');
 }
 
-export const fetchMovieId = async movie_id => {
+export const fetchMovieById = async movie_id => {
   try {
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/${movie_id}?api_key=964358699754c21d74c014b561cf196c&language=en-US`,

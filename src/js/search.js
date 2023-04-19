@@ -1,4 +1,4 @@
-import { toggleModal, fetchMovieId, renderModal } from './modal';
+import { toggleModal, fetchMovieById, renderModal } from './modal';
 import { showLoader, removeLoader } from './loader';
 import { showModal } from './modal';
 //pozniej komentarze zmienie na angielski
@@ -45,7 +45,7 @@ export function displayMovies(movies) {
     if (e.target.tagName === 'IMG') {
       showLoader();
       showModal();
-      fetchMovieId(e.target.dataset.id).then(movie => {
+      fetchMovieById(e.target.dataset.id).then(movie => {
         renderModal(movie);
         removeLoader();
       });
