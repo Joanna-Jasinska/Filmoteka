@@ -20,19 +20,17 @@ async function searchMovies(query) {
 // funkcja wyświetlająca filmy na stronie , do podmiany/korekty/ dostosowania z FT07 -Zaimplementować przesyłanie popularnych filmów na główną (pierwszą) stronę
 
 export function displayMovies(movies) {
-  const moviesContainer = document.getElementById('movies-container');
+  const moviesContainer = document.getElementById('movies-gallery');
   moviesContainer.innerHTML = '';
   movies.forEach(movie => {
     const movieCard = `
-        <div class="movie-card">
-    <ul data-modal-open>
-    <li><img data-id=${movie.id} src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" width="395" height="574"></li>
-    <li><h2>${movie.title}</h2></li>
-    <li> <p>${movie.release_date}</p></li>
-    <li><p>${movie.overview}</p></li>
-    </ul>
-        </div>
-    `;
+<div class="movie-card">
+<img data-id=${movie.id} src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" width="395" height="574">
+<h2>${movie.title}</h2>
+<p>${movie.release_date}</p>
+<p>${movie.overview}</p>
+</div>
+`;
     moviesContainer.insertAdjacentHTML('beforeend', movieCard);
   });
   moviesContainer.addEventListener('click', e => {
@@ -47,6 +45,7 @@ export function displayMovies(movies) {
       });
     }
   });
+  renderModal.innerHTML = '';
 }
 
 // funkcja obsługująca wyszukiwanie po kliknięciu przycisku, do weryfikacji nazwy przycisku jak bedzie html

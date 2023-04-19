@@ -1,11 +1,23 @@
 const refs = {
   modal: document.querySelector('[data-modal]'),
-  openModal: document.querySelector('[data-modal-open]'),
+  openModal: document.querySelectorAll('[data-modal-open]'),
   closeModal: document.querySelector('[data-modal-close]'),
   backdrop: document.querySelector('.backdrop'),
 };
 
 refs.closeModal.addEventListener('click', toggleModal);
+
+refs.modal.addEventListener('keydown', () => {
+  if (key === 'Escape') {
+    toggleModal();
+  }
+});
+
+window.addEventListener('click', e => {
+  if (!e.target === refs.modal) {
+    toggleModal();
+  }
+});
 
 export function toggleModal() {
   refs.backdrop.classList.toggle('is-hidden');
