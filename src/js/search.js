@@ -1,12 +1,13 @@
-import { toggleModal, fetchMovieById, renderModal } from './modal';
+
+import { showModal, fetchMovieById, renderModal } from './modal';
 import { showLoader, removeLoader } from './loader';
-import { showModal } from './modal';
+
 //pozniej komentarze zmienie na angielski
 
-const API_KEY = '3453ae595a5d53cbc877c6d05de8a002'; // mój klucz API z themoviedb.org
+const API_KEY = '3453ae595a5d53cbc877c6d05de8a002'; 
+
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-// funkcja wyszukująca filmy według słowa kluczowego
 async function searchMovies(query) {
   try {
     const response = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`);
@@ -23,7 +24,7 @@ async function getGenres(movieId) {
   return data.genres;
 }
 
-// funkcja wyświetlająca filmy na stronie , do podmiany/korekty/ dostosowania z FT07 -Zaimplementować przesyłanie popularnych filmów na główną (pierwszą) stronę
+
 
 export function displayMovies(movies) {
   const moviesContainer = document.getElementById('movies-gallery');
@@ -53,11 +54,9 @@ export function displayMovies(movies) {
   });
 }
 
-// funkcja obsługująca wyszukiwanie po kliknięciu przycisku, do weryfikacji nazwy przycisku jak bedzie html
-
 async function handleSearch(event) {
   event.preventDefault();
-  const searchInput = document.getElementById('.search-form--input');
+  const searchInput = document.querySelector('.search-form--input');
   const query = searchInput.value;
   if (!query) return;
 
@@ -65,6 +64,5 @@ async function handleSearch(event) {
   displayMovies(movies);
 }
 
-// nasłuchiwanie na kliknięcie buttona "Search"
 const searchButton = document.querySelector('.search-form--button');
 searchButton.addEventListener('click', handleSearch);
