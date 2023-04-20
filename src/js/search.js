@@ -1,7 +1,7 @@
 import { showModal, fetchMovieById, renderModal } from './modal';
 import { showLoader, removeLoader } from './loader';
 
-//pozniej komentarze zmienie na angielski
+
 
 const API_KEY = '3453ae595a5d53cbc877c6d05de8a002';
 
@@ -26,7 +26,7 @@ async function getGenres(movieId) {
 
 
 
-export function displayMovies(movies,maxGenres = 3) {
+export function displayMovies(movies,maxGenres = 2) {
   const moviesContainer = document.getElementById('movies-gallery');
   moviesContainer.innerHTML = '';
   movies.forEach(async movie => {
