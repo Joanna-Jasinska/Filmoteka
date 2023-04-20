@@ -1,7 +1,6 @@
 import { showModal, fetchMovieById, renderModal } from './modal';
 import { showLoader, removeLoader } from './loader';
-
-
+import { createPagination, getData } from './pagination';
 
 const API_KEY = '3453ae595a5d53cbc877c6d05de8a002';
 
@@ -11,6 +10,7 @@ async function searchMovies(query) {
   try {
     const response = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`);
     const data = await response.json();
+    createPagination(data, query);//dodane, żeby paginacja mogła się odpalić
     return data.results;
   } catch (error) {
     console.error(error);
@@ -22,9 +22,6 @@ async function getGenres(movieId) {
   const data = await response.json();
   return data.genres;
 }
-
-
-
 
 export function displayMovies(movies,maxGenres = 2) {
   const moviesContainer = document.getElementById('movies-gallery');
