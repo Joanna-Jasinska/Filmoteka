@@ -38,7 +38,7 @@ export function displayMovies(movies,maxGenres = 2) {
         <img class="movie-card__image" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" width="395" height="574">
         <h2 class="movie-card__tittle">${movie.title}</h2>
         <p class="movie-card__info"> 
-        <span class="movie-card__overview">${genreText}</span> | <span class="movie-card__realease-date">${movie.release_date}
+        <span class="movie-card__overview">${genreText}</span> | <span class="movie-card__realease-date">${movie.release_date.slice(0,4)}
     `;
     moviesContainer.insertAdjacentHTML('beforeend', movieCard);
   });
@@ -59,8 +59,17 @@ async function handleSearch(event) {
   event.preventDefault();
   const searchInput = document.querySelector('.search-form--input');
   const query = searchInput.value;
-  if (!query) return;
+  const headerAlert = document.querySelector('.notification-alert');
+  
+  // if (!query) return;
+  if (query.length <= 2) {
+    return (headerAlert.textContent = 'Search result not successful. Enter the correct movie name')
+    
+  }
 
+
+  headerAlert.textContent='';
+  
   const movies = await searchMovies(query);
   displayMovies(movies);
 }
