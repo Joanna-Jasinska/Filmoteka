@@ -1,10 +1,10 @@
-
 import { showModal, fetchMovieById, renderModal } from './modal';
 import { showLoader, removeLoader } from './loader';
+import { createPagination, getData } from './pagination';
 
 //pozniej komentarze zmienie na angielski
 
-const API_KEY = '3453ae595a5d53cbc877c6d05de8a002'; 
+const API_KEY = '3453ae595a5d53cbc877c6d05de8a002';
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 
@@ -12,6 +12,7 @@ async function searchMovies(query) {
   try {
     const response = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`);
     const data = await response.json();
+    createPagination(data, query);//dodane, żeby paginacja mogła się odpalić
     return data.results;
   } catch (error) {
     console.error(error);
@@ -23,8 +24,6 @@ async function getGenres(movieId) {
   const data = await response.json();
   return data.genres;
 }
-
-
 
 export function displayMovies(movies) {
   const moviesContainer = document.getElementById('movies-gallery');
