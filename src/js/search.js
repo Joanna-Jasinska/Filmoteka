@@ -41,8 +41,7 @@ export function displayMovies(movies,maxGenres = 2) {
         <img class="movie-card__image" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" width="395" height="574">
         <h2 class="movie-card__tittle">${movie.title}</h2>
         <p class="movie-card__info"> 
-        <span class="movie-card__overview">${genreText}</span> | <span class="movie-card__realease-date">${movie.release_date}</span> | <span class="movie-card__realease-date">${movie.vote_average}</span></p>
-      </div>
+        <span class="movie-card__overview">${genreText}</span> | <span class="movie-card__realease-date">${movie.release_date}
     `;
     moviesContainer.insertAdjacentHTML('beforeend', movieCard);
   });
