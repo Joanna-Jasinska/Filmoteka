@@ -49,28 +49,29 @@ export const renderModal = movie => {
     class="movie-details__image"
     src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
   />
+  <div class="movie-details__content-wrapper">
   <h2 class="movie-details__title">${movie.title}</h2>
-  <ul class="movie-details__list">
+  <ul class="movie-details__list list">
     <li class="movie-details__list-element">
-      <p class="movie-details__list-pararaph">
+      <p class="movie-details__list-paragraph">
         Vote / Votes
         <span class="movie-details__average">${movie.vote_average}</span> /
         <span class="movie-details__vote-count">${movie.vote_count}</span>
       </p>
     </li>
     <li class="movie-details__list-element">
-      <p class="movie-details__list-pararaph">
+      <p class="movie-details__list-paragraph">
         Popularity <span class="movie-details__popularity">${movie.popularity}</span>
       </p>
     </li>
     <li class="movie-details__list-element">
-      <p class="movie-details__list-pararaph">
-        Original Title
+      <p class="movie-details__list-paragraph">
+       <span class="no-brake"> Original Title </span>
         <span class="movie-details__original-title">${movie.original_title}</span>
       </p>
     </li>
     <li class="movie-details__list-element">
-      <p class="movie-details__list-pararaph">
+      <p class="movie-details__list-paragraph">
         Genre <span class="movie-details__genres">${movie.genres}</span>
       </p>
     </li>
@@ -80,6 +81,7 @@ export const renderModal = movie => {
   <div buttons-modal>
     <button class="buttons-modal__watched">Add to watched</button>
     <button class="buttons-modal__queue">Add to queue</button>
+  </div>
   </div>
 </div>`;
   refs.modal.innerHTML = modalMarkup;
