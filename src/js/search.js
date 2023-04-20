@@ -1,7 +1,6 @@
 import { showModal, fetchMovieById, renderModal } from './modal';
 import { showLoader, removeLoader } from './loader';
-
-//pozniej komentarze zmienie na angielski
+import { createPagination, getData } from './pagination';
 
 const API_KEY = '3453ae595a5d53cbc877c6d05de8a002';
 
@@ -11,6 +10,7 @@ async function searchMovies(query) {
   try {
     const response = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`);
     const data = await response.json();
+    createPagination(data, query);//dodane, żeby paginacja mogła się odpalić
     return data.results;
   } catch (error) {
     console.error(error);
@@ -23,10 +23,7 @@ async function getGenres(movieId) {
   return data.genres;
 }
 
-
-
-
-export function displayMovies(movies,maxGenres = 3) {
+export function displayMovies(movies,maxGenres = 2) {
   const moviesContainer = document.getElementById('movies-gallery');
   moviesContainer.innerHTML = '';
   movies.forEach(async movie => {
@@ -41,8 +38,7 @@ export function displayMovies(movies,maxGenres = 3) {
         <img class="movie-card__image" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" width="395" height="574">
         <h2 class="movie-card__tittle">${movie.title}</h2>
         <p class="movie-card__info"> 
-        <span class="movie-card__overview">${genreText}</span> | <span class="movie-card__realease-date">${movie.release_date}</span> | <span class="movie-card__realease-date">${movie.vote_average}</span></p>
-      </div>
+        <span class="movie-card__overview">${genreText}</span> | <span class="movie-card__realease-date">${movie.release_date}
     `;
     moviesContainer.insertAdjacentHTML('beforeend', movieCard);
   });
