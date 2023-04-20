@@ -65,9 +65,8 @@ export const renderModal = movie => {
       </p>
     </li>
     <li class="movie-details__list-element">
-      <p class="movie-details__list-paragraph">
-       <span class="no-brake"> Original Title </span>
-        <span class="movie-details__original-title">${movie.original_title}</span>
+      <p class="movie-details__list-paragraph movie-details__list-paragraph-gap">
+       <span class="no-brake">Original Title</span><span class="movie-details__original-title">${movie.original_title}</span>
       </p>
     </li>
     <li class="movie-details__list-element">
@@ -78,9 +77,9 @@ export const renderModal = movie => {
   </ul>
   <h3 class="movie-details__about-title">ABOUT</h3>
   <p class="movie-details__overview">${movie.overview}</p>
-  <div buttons-modal>
-    <button class="buttons-modal__watched">Add to watched</button>
-    <button class="buttons-modal__queue">Add to queue</button>
+  <div class="movie-details__buttons" buttons-modal>
+    <button class="movie-details__button buttons-modal__watched">ADD TO WATCHED</button>
+    <button class="movie-details__button buttons-modal__queue">ADD TO QUEUE</button>
   </div>
   </div>
 </div>`;
