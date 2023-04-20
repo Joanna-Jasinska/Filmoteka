@@ -7,20 +7,20 @@ const refs = {
 
 refs.closeModal.addEventListener('click', () => {
   removeModal();
-  renderModal.innerHTML = '';
+  refs.modal.innerHTML = '';
 });
 
 window.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     removeModal();
-    renderModal.innerHTML = '';
+    refs.modal.innerHTML = '';
   }
 });
 
 window.addEventListener('click', e => {
   if (e.target === refs.backdrop) {
     removeModal();
-    renderModal.innerHTML = '';
+    refs.modal.innerHTML = '';
   }
 });
 
@@ -44,6 +44,7 @@ export const fetchMovieById = async movie_id => {
 };
 export const renderModal = movie => {
   const modalMarkup = `<div class="movie-details">
+  
   <img
     class="movie-details__image"
     src="https://image.tmdb.org/t/p/w500${movie.poster_path}"

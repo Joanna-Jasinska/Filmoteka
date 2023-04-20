@@ -2,8 +2,6 @@ import { showModal, fetchMovieById, renderModal } from './modal';
 import { showLoader, removeLoader } from './loader';
 import { createPagination, getData } from './pagination';
 
-//pozniej komentarze zmienie na angielski
-
 const API_KEY = '3453ae595a5d53cbc877c6d05de8a002';
 
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -25,31 +23,35 @@ async function getGenres(movieId) {
   return data.genres;
 }
 
-export function displayMovies(movies) {
+export function displayMovies(movies,maxGenres = 2) {
   const moviesContainer = document.getElementById('movies-gallery');
   moviesContainer.innerHTML = '';
   movies.forEach(async movie => {
     const genres = await getGenres(movie.id);
-    const genreNames = genres.map(genre => genre.name).join(', ');
+    const genreNames = genres.map((genre) => genre.name);
+    const displayedGenres = genreNames.length > maxGenres ? genreNames.slice(0, maxGenres).concat(['other']) : genreNames;
+    const genreText = displayedGenres.join(', ');
+
+
     const movieCard = `
-      <div class="movie-card">
-        <img data-id=${movie.id} class="movie-card__image" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" width="395" height="574">
+      <div data-id=${movie.id} class="movie-card">
+        <img class="movie-card__image" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" width="395" height="574">
         <h2 class="movie-card__tittle">${movie.title}</h2>
         <p class="movie-card__info"> 
-        <span class="movie-card__overview">Genres:${genreNames}</span> | <span class="movie-card__realease-date">${movie.release_date}</span></p>
-      </div>
+        <span class="movie-card__overview">${genreText}</span> | <span class="movie-card__realease-date">${movie.release_date}
     `;
     moviesContainer.insertAdjacentHTML('beforeend', movieCard);
   });
   moviesContainer.addEventListener('click', e => {
-    if (e.target.tagName === 'IMG') {
-      showLoader();
-      showModal();
-      fetchMovieById(e.target.dataset.id).then(movie => {
-        renderModal(movie);
-        removeLoader();
-      });
+    if (e.target.closest('.movie-card') === null) {
+      return;
     }
+    showLoader();
+    showModal();
+    fetchMovieById(e.target.closest('.movie-card').dataset.id).then(movie => {
+      renderModal(movie);
+      removeLoader();
+    });
   });
 }
 
