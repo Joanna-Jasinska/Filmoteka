@@ -41,9 +41,6 @@ export const fetchMovieById = async movie_id => {
   }
 };
 export const renderModal = movie => {
-  console.log(movie);
-  const test = movie.genres.map(({ name }) => name).join(', ');
-  console.log(test);
   const modalMarkup = `<div class="movie-details">
   <img
     class="movie-details__image"
