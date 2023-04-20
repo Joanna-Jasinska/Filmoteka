@@ -8,12 +8,14 @@ $main-white: #ffffff; /* basic white font and details color, base backgroung */
 $main-red: #ff001b; /* basic red font color for alerts and underline*/
 $orange-button: #ff6b01; /* watched ative page button, movie rating  */
 $footer-gray: #545454; /* footer font color */
+$movie-card-gray: #8c8c8c; /* movie card font */
+$gray-detail: #f7f7f7; /* movie card details */
 
 /* ---background--- */
 
 $footer-background: #f7f7f7; //footer background and arrow button color
 $header-overlay: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
-$film-card-modal-overlay: rgba(0, 0, 0, 1);
+$film-card-modal-overlay: rgba(0, 0, 0, 0.25);
 
 /* ------MIXIN------ */
 @mixin mobile {

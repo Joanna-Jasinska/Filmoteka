@@ -167,6 +167,17 @@
   @include desktop {
     padding-bottom: 80px;
   }
+  &--input {
+    font-family: $main-font;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: $main-white;
+    &::placeholder {
+      color: $main-white;
+    }
+  }
 
   &--button {
     width: 12px;
