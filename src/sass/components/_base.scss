@@ -7,3 +7,10 @@
   text-decoration: none;
   color: $main-white;
 }
+
+.movie-card__image,
+.movie-details__image {
+  background-image: url('/src/images/coming_soon.jpg');
+  background-position: center;
+  background-size: cover;
+}
