@@ -1,0 +1,21 @@
+
+.notification-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.notification-alert{
+  max-width: fit-content;
+  text-align: center;
+  position: absolute;
+  bottom:-70px;
+  //jesli ma byc wyswietlane w  jednym wierszu dla mobile i tablet skasowac ponizsze 2 linie 
+  left:50%;
+  transform: translateX(-50%);
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+    line-height: 1.17;
+    font-weight: 400;
+    color: #ff001b;}

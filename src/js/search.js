@@ -60,11 +60,10 @@ async function handleSearch(event) {
   const searchInput = document.querySelector('.search-form--input');
   const query = searchInput.value;
   const headerAlert = document.querySelector('.notification-alert');
-  
-  // if (!query) return;
+
   if (query.length <= 2) {
-    return (headerAlert.textContent = 'Search result not successful. Enter the correct movie name')
-    
+    headerAlert.textContent = 'Search result not successful. Enter the correct movie name';
+    return;
   }
 
 
