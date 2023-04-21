@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.footer-highlight:hover {
+  cursor: pointer;
+}
+
+.modal-devs {
+  display: flex;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $film-card-modal-overlay;;
+  transition: ease-in-out 500ms;
+  color: black;
+  &-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  &-container {
+    width: 50%;
+    min-width: 300px;
+    max-width: 800px;
+    height: 80%;
+    margin: auto;
+    background-color: #fff;
+    opacity: 1;
+    border-radius: 5px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+      0px 2px 1px rgba(0, 0, 0, 0.2);
+  }
+  &__header {
+    font-size: 32px;
+    text-align: center;
+    margin: 30px auto;
+  }
+  &__slider {
+    width: 100%;
+    max-width: 800px;
+    min-width: 240px;
+    height: 75%;
+    position: relative;
+    bottom: 0;
+    left: 0;
+  }
+  &__btn {
+    position: absolute;
+    width: 50px;
+    bottom: -5%;
+    z-index: 3;
+    background-color: transparent;
+    border: 1px transparent solid;
+    border-radius: 5px;
+    font-size: 2rem;
+    transform: translateY(-50%);
+    color: #ff6b01;
+    &:hover,
+    &:focus {
+      outline: transparent;
+      border: 1px black solid;
+    }
+  }
+  &__slide-list {
+    display: flex;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  &__slide {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    &[data-active] {
+      opacity: 1;
+    }
+  }
+  &__image {
+    display: block;
+    max-width: 100%;
+    height: 80%;
+    padding: 20% auto;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+  }
+  &__description {
+    width: 100%;
+    text-align: center;
+    &name {
+      margin-top: 6px;
+    }
+  }
+  &__position {
+    font-size: 20px;
+  }
+}
+.btn-prev {
+  left: 1.5rem;
+}
+.btn-next {
+  right: 1.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .modal-devs__position {
+    font-size: 24px;
+  }
+  .modal-devs__btn {
+    font-size: 3rem;
+  }
+  .btn-prev {
+    left: 3rem;
+  }
+  .btn-next {
+    right: 3rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .modal-devs__name {
+    margin-top: 10px;
+    font-size: 20px;
+  }
+}
