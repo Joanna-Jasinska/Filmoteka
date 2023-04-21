@@ -7,11 +7,15 @@
   right: 0;
   top: 0;
   bottom: 0;
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 0.3s;
 }
 .is-hidden {
+  display: none;
   opacity: 0;
   visibility: hidden;
-  transform: translateX(-100%);
+  // transform: translateX(-100%);
 }
 .close-btn {
   padding: 0px 0px;

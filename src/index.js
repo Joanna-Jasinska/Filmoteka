@@ -1,11 +1,10 @@
 import './sass/main.scss';
 import { fetchPopular } from './js/fetch';
-import { removeLoader, initLoader } from './js/loader';
+import { removeLoader, } from './js/loader';
 import { displayMovies } from './js/search';
 import './js/pagination';
 import './js/modal-devs';
 
-initLoader();
 
 //fech danych z serwera każdorazowo odpala>>>
 // showLoader();
