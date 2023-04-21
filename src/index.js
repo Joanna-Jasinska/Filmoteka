@@ -3,6 +3,7 @@ import { fetchPopular } from './js/fetch';
 import { removeLoader, } from './js/loader';
 import { displayMovies } from './js/search';
 import './js/pagination';
+import './js/modal-devs';
 
 
 //fech danych z serwera każdorazowo odpala>>>
