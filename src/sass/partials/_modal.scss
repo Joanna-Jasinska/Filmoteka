@@ -138,11 +138,7 @@
         }
       }
       & .no-brake {
-        width: 95px;
-        height: 16px;
-        @include tablet {
-          width: 79px;
-        }
+        white-space: nowrap;
       }
     }
   }
@@ -242,6 +238,10 @@
     border: 1px solid;
     padding-inline: 0px;
     padding-block: 0px;
+    will-change: bordercolor, color, background-color;
+    transition: 250ms;
+    transition-timing-function: $main-transition-cubic;
+    cursor: pointer;
     @include tablet {
       padding-inline: 9px;
       width: 125.03px;
@@ -267,4 +267,15 @@
   color: $main-black;
   border-color: $main-black;
   background-color: $main-white;
+}
+.buttons-modal__watched:hover,
+.buttons-modal__watched:focus {
+  background-color: $orange-hover;
+  border-color: $orange-hover;
+}
+.buttons-modal__queue:hover,
+.buttons-modal__queue:focus {
+  color: $main-white;
+  background-color: $orange-hover;
+  border-color: $orange-hover;
 }
