@@ -20,6 +20,9 @@
   width: 280px;
   border-radius: 5px;
   overflow: hidden;
+  transition-property: scale();
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
   @include tablet {
     width: 336px;
   }
@@ -38,6 +41,10 @@
       width: 395px;
       height: 574px;
     }
+  }
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
   }
   &__tittle {
     margin-top: 10px;
