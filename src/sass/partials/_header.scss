@@ -144,12 +144,19 @@
   text-align: center;
   margin-top: 0px;
   margin-bottom: 0px;
+  will-change: color;
+  transition: color 250ms;
+  transition-timing-function: $main-transition-cubic;
 
   &-link,
   &-link:active,
   &-link:visited {
     text-decoration: none;
     color: $main-white;
+  }
+  &-link:hover,
+  &-link:focus {
+    color: $main-red;
   }
   &-element {
     position: relative;
