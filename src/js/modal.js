@@ -43,7 +43,7 @@ export const fetchMovieById = async movie_id => {
 export const renderModal = movie => {
   const modalMarkup = `<div class="movie-details">
   <img
-    class="movie-details__image"
+    class="movie-details__image" alt=" "
     src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
   />
   <div class="movie-details__content-wrapper">

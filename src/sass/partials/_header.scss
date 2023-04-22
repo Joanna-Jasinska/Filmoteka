@@ -119,6 +119,9 @@
     text-transform: uppercase;
     border: 1px solid $main-white;
     border-radius: 5px;
+    transition: 250ms;
+    transition-timing-function: $main-transition-cubic;
+
     @include tablet {
       width: 152px;
     }
@@ -153,6 +156,8 @@
   &-link:visited {
     text-decoration: none;
     color: $main-white;
+    transition: 250ms;
+    transition-timing-function: $main-transition-cubic;
   }
   &-link:hover,
   &-link:focus {
@@ -240,4 +245,10 @@
     bottom: -1px;
     width: 69px;
   }
+}
+.header-button:hover,
+.header-button:focus {
+  background-color: $orange-hover;
+  border-color: $orange-hover;
+  transform: scale(1.05);
 }

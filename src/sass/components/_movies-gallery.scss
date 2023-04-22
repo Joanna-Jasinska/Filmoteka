@@ -20,11 +20,30 @@
   width: 280px;
   border-radius: 5px;
   overflow: hidden;
+  transition-property: scale();
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
   @include tablet {
     width: 336px;
   }
   @include desktop {
     width: 394px;
+  }
+  &__placeholder {
+    background-image: url('/src/images/coming_soon.jpg');
+    background-position: center;
+    background-size: cover;
+    width: 280px;
+    height: 398px;
+    border-radius: 5px;
+    @include tablet {
+      width: 336px;
+      height: 455px;
+    }
+    @include desktop {
+      width: 395px;
+      height: 574px;
+    }
   }
   &__image {
     width: 280px;
@@ -38,6 +57,10 @@
       width: 395px;
       height: 574px;
     }
+  }
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
   }
   &__tittle {
     margin-top: 10px;
