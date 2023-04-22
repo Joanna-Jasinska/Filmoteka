@@ -8,12 +8,12 @@ const watchedButton = document.querySelector('#watched-btn');
 const API_KEY = '3453ae595a5d53cbc877c6d05de8a002';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-queueButton.addEventListener('click', () => {
-  let queueMovies = save(queueIds);
+queueButton.addEventListener('click', async () => {
+  let queueMovies = await save(queueIds);
   displayMovies(queueMovies);
 });
-watchedButton.addEventListener('click', () => {
-  let watchedMovies = save(watchedIds);
+watchedButton.addEventListener('click', async () => {
+  let watchedMovies = await save(watchedIds);
   displayMovies(watchedMovies);
 });
 
@@ -77,7 +77,5 @@ async function save(tab) {
     const movieData = await fetchMovieById(movieId);
     moviesData.push(movieData);
   });
-  console.log(movieData);
-  console.log(moviesData);
   return moviesData;
 }
