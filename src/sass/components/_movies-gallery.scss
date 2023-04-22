@@ -35,6 +35,7 @@
     background-size: cover;
     width: 280px;
     height: 398px;
+    border-radius: 5px;
     @include tablet {
       width: 336px;
       height: 455px;
