@@ -7,15 +7,18 @@
   right: 0;
   top: 0;
   bottom: 0;
-  opacity: 1;
-  transition-property: opacity;
-  transition-duration: 0.3s;
+  color: $main-black;
+  z-index: 3;
+  transition: ease-in-out 300ms;
+}
+.modal {
+  transition: ease-in-out 300ms;
 }
 .is-hidden {
-  display: none;
   opacity: 0;
   visibility: hidden;
-  // transform: translateX(-100%);
+  pointer-events: none;
+  box-sizing: border-box;
 }
 .close-btn {
   padding: 0px 0px;
@@ -41,6 +44,10 @@
   margin-inline: auto;
   opacity: 1;
   position: relative;
+  transition: ease-in-out 3000ms;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+
   @include tablet {
     width: 704px;
     height: 552px;
@@ -53,9 +60,6 @@
     margin-top: 150px;
     margin-inline: auto;
   }
-}
-.modal {
-  color: $main-black;
 }
 .movie-details {
   display: flex;
@@ -96,6 +100,9 @@
     width: 240px;
     height: 357px;
     border-radius: 5px;
+    background-image: url('/src/images/coming_soon.jpg');
+    background-position: center;
+    background-size: cover;
     @include tablet {
       width: 264px;
       height: 373.55px;
@@ -272,10 +279,12 @@
 .buttons-modal__watched:focus {
   background-color: $orange-hover;
   border-color: $orange-hover;
+  transform: scale(1.05);
 }
 .buttons-modal__queue:hover,
 .buttons-modal__queue:focus {
   color: $main-white;
   background-color: $orange-hover;
   border-color: $orange-hover;
+  transform: scale(1.05);
 }

@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nagłówek strony</title>
+    <title>Filmoteka</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
@@ -22,9 +23,11 @@
     <!-- W taki sposbu dodajemy fragmenty w główny HTML-plik strony. -->
     <include src="./partials/library-header.html"></include>
     <include src="./partials/library-gallery.html"></include>
+    <include src="./partials/loader.html"></include>
     <include src="./partials/button-list.html"></include>
     <include src="./partials/pagination.html"></include>
     <include src="./partials/footer.html"></include>
+    <include src="./partials/modal-devs.html"></include>
     <!-- Skrypt jest na samym dole kodu. On juz ma w sobie podłączony SAAS plik. -->
     <script src="./js/library.js" type="module"></script>
   </body>
