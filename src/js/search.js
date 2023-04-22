@@ -65,11 +65,15 @@ async function handleSearch(event) {
     headerAlert.textContent = 'Search result not successful. Enter the correct movie name';
     return;
   }
-
+const movies = await searchMovies(query);
+  if (movies.length === 0) {
+    headerAlert.textContent = "There is no such movie in the Filmoteka, please search again";
+    return;
+  }
 
   headerAlert.textContent='';
   
-  const movies = await searchMovies(query);
+  
   displayMovies(movies);
 }
 
