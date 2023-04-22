@@ -1,15 +1,21 @@
 import '../sass/main.scss';
-const movieId = [
-  804150, 849869, 603692, 736790, 315162, 758323, 638974, 700391, 677179, 76600, 594767, 502356,
-];
-const local = JSON.stringify(movieId);
-localStorage.setItem('queue', local);
-const queueId = JSON.parse(localStorage.getItem('queue'));
-console.log(queueId);
-let moviesToDisplay = [1, 2];
+const queueIds = JSON.parse(localStorage.getItem('queue'));
+const watchedIds = JSON.parse(localStorage.getItem('watched'));
+
+const queueButton = document.querySelector('#queue-btn');
+const watchedButton = document.querySelector('#watched-btn');
 
 const API_KEY = '3453ae595a5d53cbc877c6d05de8a002';
 const BASE_URL = 'https://api.themoviedb.org/3';
+
+queueButton.addEventListener('click', () => {
+  let queueMovies = save(queueIds);
+  displayMovies(queueMovies);
+});
+watchedButton.addEventListener('click', () => {
+  let watchedMovies = save(watchedIds);
+  displayMovies(watchedMovies);
+});
 
 async function getGenres(movieId) {
   const response = await fetch(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`);
@@ -65,15 +71,13 @@ const fetchMovieById = async movie_id => {
     console.log(error);
   }
 };
-function save(tab) {
-  tab.forEach(movieID => {
-    fetchMovieById(movieID).then(movie => {
-      moviesToDisplay.push(movie);
-    });
+async function save(tab) {
+  let moviesData = [];
+  tab.forEach(async movieId => {
+    const movieData = await fetchMovieById(movieId);
+    moviesData.push(movieData);
   });
+  console.log(movieData);
+  console.log(moviesData);
+  return moviesData;
 }
-console.log(moviesToDisplay);
-save(movieId);
-moviesToDisplay.push({ name: 'dog', age: 4 });
-console.log(moviesToDisplay[4]);
-// displayMovies(moviesToDisplay);
