@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   margin-top: 60px;
-   &-list {
+  &-list {
     margin: 0 0;
     display: flex;
     flex-wrap: wrap;
@@ -43,5 +43,12 @@
   }
   &-highlight {
     text-decoration: underline;
+    transition: 250ms;
+    transition-timing-function: $main-transition-cubic;
   }
+}
+.footer-highlight:hover,
+.footer-highlight:focus {
+  cursor: pointer;
+  color: $main-orange;
 }
