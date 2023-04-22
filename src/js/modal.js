@@ -79,10 +79,46 @@ export const renderModal = movie => {
   <h3 class="movie-details__about-title">ABOUT</h3>
   <p class="movie-details__overview">${movie.overview}</p>
   <div class="movie-details__buttons" buttons-modal>
-    <button class="movie-details__button buttons-modal__watched">ADD TO WATCHED</button>
-    <button class="movie-details__button buttons-modal__queue">ADD TO QUEUE</button>
+    <button data-id=${
+      movie.id
+    } class="movie-details__button buttons-modal__watched">ADD TO WATCHED</button>
+    <button data-id=${
+      movie.id
+    } class="movie-details__button buttons-modal__queue">ADD TO QUEUE</button>
   </div>
   </div>
 </div>`;
   refs.modal.innerHTML = modalMarkup;
+  const addWatched = document.querySelector('.buttons-modal__watched');
+  addWatched.addEventListener('click', e => {
+    const data = localStorage.getItem('watched');
+    let watched = JSON.parse(data);
+    if (watched === null) {
+      watched = [];
+    } else if (watched[0] < 10) {
+      const movie = watched;
+      watched = [movie];
+    }
+    if (watched.indexOf(e.target.dataset.id) != -1) {
+    } else {
+      watched.push(e.target.dataset.id);
+      localStorage.setItem('watched', JSON.stringify(watched));
+    }
+  });
+  const addQueue = document.querySelector('.buttons-modal__queue');
+  addQueue.addEventListener('click', e => {
+    const data = localStorage.getItem('queue');
+    let queue = JSON.parse(data);
+    if (queue === null) {
+      queue = [];
+    } else if (queue[0] < 10) {
+      const movie = queue;
+      queue = [movie];
+    }
+    if (queue.indexOf(e.target.dataset.id) != -1) {
+    } else {
+      queue.push(e.target.dataset.id);
+      localStorage.setItem('queue', JSON.stringify(queue));
+    }
+  });
 };
