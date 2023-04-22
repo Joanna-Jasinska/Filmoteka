@@ -100,6 +100,9 @@
     width: 240px;
     height: 357px;
     border-radius: 5px;
+    background-image: url('/src/images/coming_soon.jpg');
+    background-position: center;
+    background-size: cover;
     @include tablet {
       width: 264px;
       height: 373.55px;

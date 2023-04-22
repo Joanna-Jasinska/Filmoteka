@@ -29,6 +29,21 @@
   @include desktop {
     width: 394px;
   }
+  &__placeholder {
+    background-image: url('/src/images/coming_soon.jpg');
+    background-position: center;
+    background-size: cover;
+    width: 280px;
+    height: 398px;
+    @include tablet {
+      width: 336px;
+      height: 455px;
+    }
+    @include desktop {
+      width: 395px;
+      height: 574px;
+    }
+  }
   &__image {
     width: 280px;
     height: 398px;
