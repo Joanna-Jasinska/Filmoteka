@@ -1,6 +1,7 @@
 //import funkcji do wyświetlania filmów
 import { displayMovies } from './search';
-const Pagination = require('.tui-pagination');
+const Pagination = require('tui-pagination');
+import Pagination from 'tui-pagination';
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '964358699754c21d74c014b561cf196c';
@@ -47,6 +48,31 @@ export async function createPagination(data, query) {
     };
     setPagination();
     
+    const instance = new Pagination(paginationContainer, options);
+    const options = {
+      totalItems: 10,
+      firstItemClassName: 'tui-first-child',
+      lastItemClassName: 'tui-last-child',
+      template: {
+        page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+        currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+        moveButton:
+          '<a href="#" class="tui-page-btn tui-{{type}}">' +
+          '<span class="tui-ico-{{type}}">{{type}}</span>' +
+          '</a>',
+        disabledMoveButton:
+          '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+          '<span class="tui-ico-{{type}}">{{type}}</span>' +
+          '</span>',
+        moreButton:
+          '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+          '<span class="tui-ico-ellip">...</span>' +
+          '</a>'
+      }
+    }
+
+    // const pagination = new Pagination(paginationContainer, options);
+    instance.setPagination();
     
   } catch (error) {
     console.error(error);
