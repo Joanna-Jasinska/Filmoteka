@@ -94,7 +94,7 @@ export const renderModal = movie => {
     </li>
     <li class="movie-details__list-element">
       <p class="movie-details__list-paragraph">
-        Popularity <span class="movie-details__popularity">${movie.popularity}</span>
+        Popularity <span class="movie-details__popularity">${movie.popularity.toFixed(1)}</span>
       </p>
     </li>
     <li class="movie-details__list-element">
@@ -108,6 +108,7 @@ export const renderModal = movie => {
       <p class="movie-details__list-paragraph">
         Genre <span class="movie-details__genres">${movie.genres
           .map(({ name }) => name)
+          .splice(0, 1)
           .join(', ')}</span>
       </p>
     </li>
