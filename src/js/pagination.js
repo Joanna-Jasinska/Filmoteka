@@ -47,10 +47,14 @@ export async function createPagination(data, query) {
       );
     };
     setPagination();
-    
+   
     const instance = new Pagination(paginationContainer, options);
     const options = {
       totalItems: 10,
+      itemsPerPage: 10,
+      visiblePages: 10,
+      page: 1,
+      centerAlign: false,
       firstItemClassName: 'tui-first-child',
       lastItemClassName: 'tui-last-child',
       template: {
@@ -71,8 +75,14 @@ export async function createPagination(data, query) {
       }
     }
 
+<<<<<<< Updated upstream
     // const pagination = new Pagination(paginationContainer, options);
-    instance.setPagination();
+    instance.createPagination();
+=======
+    const pagination = new Pagination(paginationContainer, options);
+    instance.createPagination();
+  
+>>>>>>> Stashed changes
     
   } catch (error) {
     console.error(error);
