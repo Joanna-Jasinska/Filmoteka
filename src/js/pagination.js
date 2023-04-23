@@ -11,7 +11,7 @@ const paginationContainer = document.querySelector('.button-list__counter');
 //wyświetlanie filmów dzieje się dzięki funkcji displayMovies() z search.js
 export async function createPagination(data, query) {
   try {
-    const perPage = 40; // ilość wyników na stronie
+    const perPage = 20; // ilość wyników na stronie
 
     // obliczanie ilości stron
     const totalPages = Math.ceil(data.total_results / perPage);
@@ -33,11 +33,15 @@ export async function createPagination(data, query) {
           );
           const movie = await newPageResponse.json();
           displayMovies(movie.results);
-        }),
+         
+        })
       );
     };
     setPagination();
+    
+    
   } catch (error) {
     console.error(error);
   }
 }
+
