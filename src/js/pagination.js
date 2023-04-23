@@ -1,5 +1,6 @@
 //import funkcji do wyświetlania filmów
 import { displayMovies } from './search';
+const Pagination = require('.tui-pagination');
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '964358699754c21d74c014b561cf196c';
@@ -15,6 +16,13 @@ export async function createPagination(data, query) {
 
     // obliczanie ilości stron
     const totalPages = Math.ceil(data.total_results / perPage);
+ 
+    // tui-pagination
+    // ---pagination new-----
+    // const instance = new Pagination(container, { ... });
+    // instance.getCurrentPage();
+
+
 
     // renderowanie paginacji
     const setPagination = () => {
