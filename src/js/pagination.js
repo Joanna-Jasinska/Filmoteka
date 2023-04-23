@@ -75,14 +75,11 @@ export async function createPagination(data, query) {
       }
     }
 
-<<<<<<< Updated upstream
     // const pagination = new Pagination(paginationContainer, options);
     instance.createPagination();
-=======
     const pagination = new Pagination(paginationContainer, options);
     instance.createPagination();
   
->>>>>>> Stashed changes
     
   } catch (error) {
     console.error(error);
