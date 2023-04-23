@@ -5,28 +5,64 @@ const refs = {
   backdrop: document.querySelector('.backdrop'),
 };
 
-refs.closeModal.addEventListener('click', () => {
-  removeModal();
-});
+export function showModal() {
+  refs.backdrop.classList.remove('is-hidden');
+  window.addEventListener('keydown', removeModalEsc);
+  window.addEventListener('click', removeModalBackdrop);
+  refs.closeModal.addEventListener('click', removeModal);
+}
+export function removeModal() {
+  refs.backdrop.classList.add('is-hidden');
+  refs.closeModal.removeEventListener('click', removeModal);
+  window.removeEventListener('keydown', removeModalEsc);
+  window.removeEventListener('click', removeModalBackdrop);
+  document.querySelector('.buttons-modal__watched').removeEventListener('click', addWatchedEvent); //jak wrzucałem odwołanie się do tego elemntu dom poprzez umiejscowienie tej liniki w refs to eventy nie chciały działać
+  document.querySelector('.buttons-modal__queue').removeEventListener('click', addQueueEvent);
+  refs.modal.innerHTML = '';
+}
 
-window.addEventListener('keydown', e => {
+function removeModalEsc(e) {
   if (e.key === 'Escape') {
     removeModal();
   }
-});
-
-window.addEventListener('click', e => {
+}
+function removeModalBackdrop(e) {
   if (e.target === refs.backdrop) {
     removeModal();
   }
-});
-
-export function showModal() {
-  refs.backdrop.classList.remove('is-hidden');
 }
-function removeModal() {
-  refs.backdrop.classList.add('is-hidden');
-  refs.modal.innerHTML = '';
+
+function addQueueEvent(e) {
+  console.log('dodano do queune');
+  const data = localStorage.getItem('queue');
+  let queue = JSON.parse(data);
+  if (queue === null) {
+    queue = [];
+  } else if (queue[0] < 10) {
+    const movie = queue;
+    queue = [movie];
+  }
+  if (queue.indexOf(e.target.dataset.id) != -1) {
+  } else {
+    queue.push(e.target.dataset.id);
+    localStorage.setItem('queue', JSON.stringify(queue));
+  }
+}
+function addWatchedEvent(e) {
+  console.log('dodano do watched');
+  const data = localStorage.getItem('watched');
+  let watched = JSON.parse(data);
+  if (watched === null) {
+    watched = [];
+  } else if (watched[0] < 10) {
+    const movie = watched;
+    watched = [movie];
+  }
+  if (watched.indexOf(e.target.dataset.id) != -1) {
+  } else {
+    watched.push(e.target.dataset.id);
+    localStorage.setItem('watched', JSON.stringify(watched));
+  }
 }
 
 export const fetchMovieById = async movie_id => {
@@ -89,36 +125,6 @@ export const renderModal = movie => {
   </div>
 </div>`;
   refs.modal.innerHTML = modalMarkup;
-  const addWatched = document.querySelector('.buttons-modal__watched');
-  addWatched.addEventListener('click', e => {
-    const data = localStorage.getItem('watched');
-    let watched = JSON.parse(data);
-    if (watched === null) {
-      watched = [];
-    } else if (watched[0] < 10) {
-      const movie = watched;
-      watched = [movie];
-    }
-    if (watched.indexOf(e.target.dataset.id) != -1) {
-    } else {
-      watched.push(e.target.dataset.id);
-      localStorage.setItem('watched', JSON.stringify(watched));
-    }
-  });
-  const addQueue = document.querySelector('.buttons-modal__queue');
-  addQueue.addEventListener('click', e => {
-    const data = localStorage.getItem('queue');
-    let queue = JSON.parse(data);
-    if (queue === null) {
-      queue = [];
-    } else if (queue[0] < 10) {
-      const movie = queue;
-      queue = [movie];
-    }
-    if (queue.indexOf(e.target.dataset.id) != -1) {
-    } else {
-      queue.push(e.target.dataset.id);
-      localStorage.setItem('queue', JSON.stringify(queue));
-    }
-  });
+  document.querySelector('.buttons-modal__watched').addEventListener('click', addWatchedEvent);
+  document.querySelector('.buttons-modal__queue').addEventListener('click', addQueueEvent);
 };

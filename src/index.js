@@ -1,10 +1,11 @@
 import './sass/main.scss';
 import { fetchPopular } from './js/fetch';
-import { removeLoader, } from './js/loader';
+import { removeLoader } from './js/loader';
 import { displayMovies } from './js/search';
+
 import './js/pagination';
 import './js/modal-devs';
-
+import { removeModal } from './js/modal';
 
 //fech danych z serwera każdorazowo odpala>>>
 // showLoader();
@@ -19,6 +20,7 @@ fetchPopular()
     console.log(popularMovies.results);
     const movies = popularMovies.results;
     displayMovies(movies);
+    removeModal();
   })
   .catch(error => console.error(error))
   .finally(() => {
