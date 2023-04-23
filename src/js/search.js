@@ -35,7 +35,7 @@ export function displayMovies(movies, maxGenres = 2) {
 
     const movieCard = `
       <div data-id=${movie.id} class="movie-card">
-        <div class="movie-card__placeholder"><img class="movie-card__image" alt=" " src="https://image.tmdb.org/t/p/w500${
+        <div class="movie-card__placeholder"><img class="movie-card__image"  src="https://image.tmdb.org/t/p/w500${
           movie.poster_path
         }" alt="${movie.title}" width="395" height="574"></div>
         <h2 class="movie-card__tittle">${movie.title}</h2>
