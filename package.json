@@ -23,6 +23,7 @@
     "posthtml-include": "^1.7.4"
   },
   "dependencies": {
-    "notiflix": "^3.2.6"
+    "notiflix": "^3.2.6",
+    "tui-pagination": "^3.4.1"
   }
 }
