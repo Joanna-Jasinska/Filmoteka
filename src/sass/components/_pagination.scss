@@ -1,0 +1,43 @@
+.icon-arrow {
+  // margin: auto;
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  background-size: contain;
+  background-position: center;
+  font-size: 0.8rem;
+  // display: inline-block;
+  &-prev {
+    content: url(../images/icon-arrow-prev.svg);
+  }
+  &-next {
+    content: url(../images/icon-arrow-next.svg);
+  }
+  &-first {
+    color: $main-black;
+  }
+  &-last {
+    color: $main-black;
+  }
+}
+
+.tui-prev,
+.tui-next {
+  background-color: $pagination-btn-gray;
+}
+.tui-page-btn {
+  border: none !important;
+  border-radius: 5px;
+  // border-color:
+}
+
+.tui-is-selected {
+  background-color: $main-orange !important;
+  color: $main-white !important;
+  // border-color:
+}
+.tui-is-disabled {
+  display: none !important;
+}
+// .tui-is-disabled > .icon-arrow {
+//   stroke: $btn-disabled;
+// }
