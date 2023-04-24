@@ -32,15 +32,33 @@
   // }
 }
 
-.tui-first,
-.tui-last {
+.tui-first {
+  position: relative;
+  left: 40px;
   padding: 6px !important;
 }
-.tui-prev,
-.tui-next {
+.tui-last {
+  position: relative;
+  left: -40px;
+  padding: 6px !important;
+}
+.tui-prev {
+  position: relative;
+  left: -40px;
   background-color: $pagination-btn-gray;
   padding: 10px !important;
 }
+.tui-next {
+  position: relative;
+  left: 40px;
+  background-color: $pagination-btn-gray;
+  padding: 10px !important;
+}
+.tui-prev-is-ellip,
+.tui-next-is-ellip {
+  padding: 6px !important;
+}
+
 .tui-prev-is-ellip,
 .tui-next-is-ellip {
   padding: 6px !important;
