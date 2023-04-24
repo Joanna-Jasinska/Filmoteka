@@ -31,3 +31,16 @@
     color: $main-white;
   }
 }
+
+.tui-pagination {
+  height: 50px;
+  margin: 0;
+  align-items: center;
+}
+
+.button-list__button {
+  margin-top: 8px;
+  margin-left: -60px;
+  color: green;
+  z-index: -1;
+}
