@@ -6,6 +6,7 @@ import { displayMovies } from './js/search';
 import './js/pagination';
 import './js/modal-devs';
 import { removeModal } from './js/modal';
+import { createPagination } from './js/pagination';
 
 //fech danych z serwera każdorazowo odpala>>>
 // showLoader();
@@ -20,6 +21,7 @@ fetchPopular()
     console.log(popularMovies.results);
     const movies = popularMovies.results;
     displayMovies(movies);
+    createPagination(popularMovies, 'popular');
     removeModal();
   })
   .catch(error => console.error(error))

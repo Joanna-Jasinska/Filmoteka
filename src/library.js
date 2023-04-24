@@ -1,5 +1,7 @@
 import './sass/main.scss';
 import './js/modal-devs';
+import './js/pagination';
+import { createPagination } from './js/pagination';
 
 const queueIds = JSON.parse(localStorage.getItem('queue'));
 const watchedIds = JSON.parse(localStorage.getItem('watched'));
@@ -13,10 +15,12 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 queueButton.addEventListener('click', async () => {
   let queueMovies = await save(queueIds);
   displayMovies(queueMovies);
+  createPagination(queueMovies, 'library');
 });
 watchedButton.addEventListener('click', async () => {
   let watchedMovies = await save(watchedIds);
   displayMovies(watchedMovies);
+  createPagination(watchedMovies, 'library');
 });
 
 async function getGenres(movieId) {
