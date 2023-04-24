@@ -21,7 +21,7 @@ fetchPopular()
     console.log(popularMovies.results);
     const movies = popularMovies.results;
     displayMovies(movies);
-    createPagination(popularMovies);
+    createPagination(popularMovies, 'popular');
     removeModal();
   })
   .catch(error => console.error(error))

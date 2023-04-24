@@ -12,7 +12,7 @@ const paginationContainer = document.querySelector('.tui-pagination');
 
 
 //funkcja inicjująca paginację z opcjami
-export async function createPagination(data, query) {
+export async function createPagination(data, site, query) {
   try {
     const options = {
       totalItems: `${data.total_results}`,
@@ -43,8 +43,10 @@ export async function createPagination(data, query) {
     pagination.on('beforeMove', async event => {
       const { page } = event;
       let newPageResponse;
-      if (!query) {
+      if (site === 'popular') {
         newPageResponse = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&page=${page}`);
+      } else if (site === 'library') { 
+        newPageResponse = '';
       } else {
         newPageResponse = await fetch(
           `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=${page}`,
