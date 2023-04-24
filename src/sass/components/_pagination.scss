@@ -1,7 +1,7 @@
 .icon-arrow {
   // margin: auto;
   background-repeat: no-repeat;
-  background-size: 18px 18px;
+  background-size: 16px 16px;
   background-size: contain;
   background-position: center;
   font-size: 0.8rem;
@@ -21,9 +21,11 @@
 }
 
 .tui-page-btn {
+  width: 40px !important;
+  height: 40px !important;
   border: none !important;
   border-radius: 5px;
-  padding: 8px !important;
+  padding: 14px !important;
 
   // & .icon-arrow {
   //   margin: auto !important;
@@ -32,16 +34,16 @@
 
 .tui-first,
 .tui-last {
-  padding: 0px !important;
+  padding: 6px !important;
 }
 .tui-prev,
 .tui-next {
   background-color: $pagination-btn-gray;
-  padding: 3px !important;
+  padding: 10px !important;
 }
 .tui-prev-is-ellip,
 .tui-next-is-ellip {
-  padding: 0 !important;
+  padding: 6px !important;
 }
 
 .tui-is-selected {
