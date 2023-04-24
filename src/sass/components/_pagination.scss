@@ -8,15 +8,27 @@
   // display: inline-block;
   &-prev {
     content: url(../images/icon-arrow-prev.svg);
+    &.icon-arrow-hits {
+      display: none !important;
+    }
   }
   &-next {
     content: url(../images/icon-arrow-next.svg);
+    &.icon-arrow-hits {
+      display: none !important;
+    }
   }
   &-first {
     color: $main-black;
+    &.icon-arrow-hits {
+      display: none !important;
+    }
   }
   &-last {
     color: $main-black;
+    &.icon-arrow-1 {
+      display: none !important;
+    }
   }
 }
 
@@ -34,12 +46,12 @@
 
 .tui-first {
   position: relative;
-  left: 40px;
+  left: 44px;
   padding: 6px !important;
 }
 .tui-last {
   position: relative;
-  left: -40px;
+  left: -44px;
   padding: 6px !important;
 }
 .tui-prev {
@@ -64,7 +76,8 @@
   color: $main-white !important;
   // border-color:
 }
-.tui-is-disabled {
+.tui-is-disabled,
+.page-1 {
   display: none !important;
 }
 // .tui-is-disabled > .icon-arrow {
