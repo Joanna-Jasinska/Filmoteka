@@ -25,7 +25,7 @@ export async function createPagination(data, site, query) {
         page: '<a href="#" class="tui-page-btn">{{page}}</a>',
         currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
         moveButton:
-          '<a href="#" class="tui-page-btn tui-{{type}} button-list_button">' +
+          '<a href="#" class="tui-page-btn tui-{{type}}">' +
           `<div class="icon-arrow icon-arrow-{{type}}">{{type}}</div>` +
           '</a>',
         disabledMoveButton:
