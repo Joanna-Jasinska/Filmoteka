@@ -10,7 +10,6 @@ const API_KEY = '964358699754c21d74c014b561cf196c';
 //kontener na paginatory
 const paginationContainer = document.querySelector('.tui-pagination');
 
-
 //funkcja inicjująca paginację z opcjami
 export async function createPagination(data, site, query) {
   try {
@@ -19,7 +18,7 @@ export async function createPagination(data, site, query) {
       itemsPerPage: 20,
       visiblePages: 5,
       page: 1,
-      centerAlign: false,
+      centerAlign: true,
       firstItemClassName: 'tui-first-child',
       lastItemClassName: 'tui-last-child',
       template: {
@@ -45,7 +44,7 @@ export async function createPagination(data, site, query) {
       let newPageResponse;
       if (site === 'popular') {
         newPageResponse = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&page=${page}`);
-      } else if (site === 'library') { 
+      } else if (site === 'library') {
         newPageResponse = '';
       } else {
         newPageResponse = await fetch(
