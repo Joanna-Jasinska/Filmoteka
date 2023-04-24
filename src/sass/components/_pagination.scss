@@ -5,6 +5,7 @@
   background-size: contain;
   background-position: center;
   font-size: 0.8rem;
+  font-weight: 500;
   // display: inline-block;
   &-prev {
     content: url(../images/icon-arrow-prev.svg);
@@ -33,6 +34,7 @@
 }
 
 .tui-page-btn {
+  font-weight: 500 !important;
   width: 40px !important;
   height: 40px !important;
   border: none !important;
@@ -47,12 +49,12 @@
 .tui-first {
   position: relative;
   left: 44px;
-  padding: 6px !important;
+  padding: 7px !important;
 }
 .tui-last {
   position: relative;
   left: -44px;
-  padding: 6px !important;
+  padding: 7px !important;
 }
 .tui-prev {
   position: relative;
