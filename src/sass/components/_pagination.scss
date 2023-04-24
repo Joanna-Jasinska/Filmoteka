@@ -20,14 +20,28 @@
   }
 }
 
-.tui-prev,
-.tui-next {
-  background-color: $pagination-btn-gray;
-}
 .tui-page-btn {
   border: none !important;
   border-radius: 5px;
-  // border-color:
+  padding: 8px !important;
+
+  // & .icon-arrow {
+  //   margin: auto !important;
+  // }
+}
+
+.tui-first,
+.tui-last {
+  padding: 0px !important;
+}
+.tui-prev,
+.tui-next {
+  background-color: $pagination-btn-gray;
+  padding: 3px !important;
+}
+.tui-prev-is-ellip,
+.tui-next-is-ellip {
+  padding: 0 !important;
 }
 
 .tui-is-selected {
