@@ -1,7 +1,11 @@
 import './sass/main.scss';
 import './js/modal-devs';
+import './js/loader.js';
+import './js/modal.js';
 import './js/pagination';
 import { createPagination } from './js/pagination';
+import { removeLoader, showLoader } from './js/loader.js';
+import { renderModal, showModal } from './js/modal.js';
 
 const queueIds = JSON.parse(localStorage.getItem('queue'));
 const watchedIds = JSON.parse(localStorage.getItem('watched'));
@@ -16,11 +20,13 @@ queueButton.addEventListener('click', async () => {
   let queueMovies = await save(queueIds);
   displayMovies(queueMovies);
   createPagination(queueMovies, 'library');
+  removeLoader();
 });
 watchedButton.addEventListener('click', async () => {
   let watchedMovies = await save(watchedIds);
   displayMovies(watchedMovies);
   createPagination(watchedMovies, 'library');
+  removeLoader();
 });
 
 async function getGenres(movieId) {
@@ -60,6 +66,7 @@ function displayMovies(movies, maxGenres = 2) {
     showLoader();
     showModal();
     fetchMovieById(e.target.closest('.movie-card').dataset.id).then(movie => {
+      showModal(movie);
       renderModal(movie);
       removeLoader();
     });
