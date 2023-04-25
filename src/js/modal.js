@@ -35,6 +35,7 @@ function removeModalBackdrop(e) {
 
 function addQueueEvent(e) {
   const data = localStorage.getItem('queue');
+  const queueButton = document.querySelector('#queue-button');
   let queue = JSON.parse(data);
   if (queue === null) {
     queue = [];
@@ -51,12 +52,13 @@ function addQueueEvent(e) {
     localStorage.setItem('queue', JSON.stringify(queue));
   }
   checkMovie(e.target.dataset.id);
-  if (queueButton.classList.contained('is-active')) {
+  if (queueButton.classList.contains('is-active')) {
     showQueue();
   }
 }
 function addWatchedEvent(e) {
   const data = localStorage.getItem('watched');
+  const watchedButton = document.querySelector('#watched-button');
   let watched = JSON.parse(data);
   if (watched === null) {
     watched = [];
@@ -73,7 +75,7 @@ function addWatchedEvent(e) {
     localStorage.setItem('watched', JSON.stringify(watched));
   }
   checkMovie(e.target.dataset.id);
-  if (watchedButton.classList.contained('is-active')) {
+  if (watchedButton.classList.contains('is-active')) {
     showWatched();
   }
 }
