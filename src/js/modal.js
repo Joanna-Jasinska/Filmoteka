@@ -52,7 +52,7 @@ function addQueueEvent(e) {
     localStorage.setItem('queue', JSON.stringify(queue));
   }
   checkMovie(e.target.dataset.id);
-  if (queueButton.classList.contains('is-active')) {
+  if (queueButton && queueButton.classList.contains('is-active')) {
     showQueue();
   }
 }
@@ -75,7 +75,7 @@ function addWatchedEvent(e) {
     localStorage.setItem('watched', JSON.stringify(watched));
   }
   checkMovie(e.target.dataset.id);
-  if (watchedButton.classList.contains('is-active')) {
+  if (watchedButton && watchedButton.classList.contains('is-active')) {
     showWatched();
   }
 }

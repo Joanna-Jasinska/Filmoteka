@@ -1,5 +1,5 @@
 import './js/library';
-import { showWatched } from './js/library';
+import { showWatched, showQueue } from './js/library';
 const queueButton = document.querySelector('#queue-button');
 const watchedButton = document.querySelector('#watched-button');
 watchedButton.classList.add('is-active');
