@@ -17,7 +17,7 @@ async function searchMovies(query) {
   }
 }
 
-async function getGenres(movieId) {
+export async function getGenres(movieId) {
   const response = await fetch(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`);
   const data = await response.json();
   return data.genres;
