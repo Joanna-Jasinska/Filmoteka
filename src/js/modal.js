@@ -1,3 +1,4 @@
+import { showQueue, showWatched } from './library';
 const refs = {
   modal: document.querySelector('[data-modal]'),
   openModal: document.querySelectorAll('[data-modal-open]'),
@@ -50,6 +51,9 @@ function addQueueEvent(e) {
     localStorage.setItem('queue', JSON.stringify(queue));
   }
   checkMovie(e.target.dataset.id);
+  if (queueButton.classList.contained('is-active')) {
+    showQueue();
+  }
 }
 function addWatchedEvent(e) {
   const data = localStorage.getItem('watched');
@@ -69,6 +73,9 @@ function addWatchedEvent(e) {
     localStorage.setItem('watched', JSON.stringify(watched));
   }
   checkMovie(e.target.dataset.id);
+  if (watchedButton.classList.contained('is-active')) {
+    showWatched();
+  }
 }
 function checkMovie(id) {
   const watchedButton = document.querySelector('#watched-btn');
@@ -88,14 +95,12 @@ function checkMovie(id) {
     }
   }
   if (Array.isArray(watched) == true || watched == id) {
-    console.log('ads');
     if (watched.indexOf(String(id)) != -1 || watched == id) {
       // jest w local storage
       watchedButton.classList.add('buttons-modal__added');
       watchedButton.classList.remove('buttons-modal__add');
       watchedButton.innerHTML = 'DELETE FROM WATCHED';
     } else {
-      console.log('ads');
       watchedButton.classList.remove('buttons-modal__added');
       watchedButton.classList.add('buttons-modal__add');
       watchedButton.innerHTML = 'ADD TO WATCHED';

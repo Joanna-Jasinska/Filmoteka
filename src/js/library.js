@@ -8,12 +8,6 @@ import { createPagination } from './pagination';
 import { removeLoader, showLoader } from './loader.js';
 import { renderModal, showModal, fetchMovieById } from './modal.js';
 
-const queueButton = document.querySelector('#queue-button');
-const watchedButton = document.querySelector('#watched-button');
-watchedButton.classList.add('is-active');
-const API_KEY = '3453ae595a5d53cbc877c6d05de8a002';
-const BASE_URL = 'https://api.themoviedb.org/3';
-
 export async function showQueue() {
   const queueIds = JSON.parse(localStorage.getItem('queue'));
   let queueMovies = await save(queueIds);
@@ -30,16 +24,6 @@ export async function showWatched() {
   createPagination(libraryData, 'library');
   removeLoader();
 }
-queueButton.addEventListener('click', () => {
-  queueButton.classList.add('is-active');
-  watchedButton.classList.remove('is-active');
-  showQueue();
-});
-watchedButton.addEventListener('click', () => {
-  queueButton.classList.remove('is-active');
-  watchedButton.classList.add('is-active');
-  showWatched();
-});
 
 function displayMovies(movies, maxGenres = 2) {
   const moviesContainer = document.querySelector('#library-gallery');
