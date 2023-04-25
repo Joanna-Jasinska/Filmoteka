@@ -30,16 +30,16 @@ export async function createPagination(data, site, query) {
       firstItemClassName: 'tui-first-child',
       lastItemClassName: 'tui-last-child',
       template: {
-        page: '<a href="#" class="tui-page-btn page-{{page}}">{{page}}</a>',
-        currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+        page: '<button class="tui-page-btn page-{{page}}"><p class="tui-page-nr">{{page}}</p></a>',
+        currentPage: '<button class="tui-page-btn tui-is-selected"><p class="tui-page-nr">{{page}}</p></button>',
         moveButton:
-          '<a href="#" class="tui-page-btn tui-{{type}}">' +
+          '<button class="tui-page-btn tui-{{type}}">' +
           `<div class="icon-arrow icon-arrow-{{type}} icon-arrow-1 ">${1}</div>` +
           `<div class="icon-arrow icon-arrow-{{type}} icon-arrow-hits">${getMaxPage(
             data.total_results,
             20,
           )}</div>` +
-          '</a>',
+          '</button>',
         disabledMoveButton:
           '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
           // '<span class="tui-ico-{{type}}">{{type}}</span>' +

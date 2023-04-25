@@ -1,12 +1,10 @@
 .icon-arrow {
-  // margin: auto;
   background-repeat: no-repeat;
   background-size: 16px 16px;
   background-size: contain;
   background-position: center;
-  font-size: 0.8rem;
+  font-size: 12px;
   font-weight: 500;
-  // display: inline-block;
   &-prev {
     content: url(../images/icon-arrow-prev.svg);
     &.icon-arrow-hits {
@@ -32,56 +30,58 @@
     }
   }
 }
-
-.tui-page-btn {
-  font-weight: 500 !important;
-  width: 40px !important;
-  height: 40px !important;
-  border: none !important;
-  border-radius: 5px;
-  padding: 14px !important;
-
-  // & .icon-arrow {
-  //   margin: auto !important;
-  // }
+.tui-pagination {
+  height: 40px;
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+  .tui-page-btn {
+    font-weight: 500 !important;
+    width: 40px !important;
+    height: 40px !important;
+    border: none !important;
+    border-radius: 5px;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: white;
+  }
+  .tui-first {
+    position: relative;
+    left: 44px;
+    padding: 7px !important;
+  }
+  .tui-last {
+    position: relative;
+    left: -44px;
+    padding: 7px !important;
+  }
+  .tui-prev {
+    position: relative;
+    left: -40px;
+    background-color: $pagination-btn-gray;
+    padding: 10px !important;
+  }
+  .tui-next {
+    position: relative;
+    left: 40px;
+    background-color: $pagination-btn-gray;
+    padding: 10px !important;
+  }
+  .tui-prev-is-ellip,
+  .tui-next-is-ellip {
+    padding: 6px !important;
+  }
+  .tui-is-selected {
+    background-color: $main-orange !important;
+    color: $main-white !important;
+  }
+  .tui-is-disabled,
+  .page-1 {
+    display: none !important;
+  }
+  .tui-page-nr {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
 }
-
-.tui-first {
-  position: relative;
-  left: 44px;
-  padding: 7px !important;
-}
-.tui-last {
-  position: relative;
-  left: -44px;
-  padding: 7px !important;
-}
-.tui-prev {
-  position: relative;
-  left: -40px;
-  background-color: $pagination-btn-gray;
-  padding: 10px !important;
-}
-.tui-next {
-  position: relative;
-  left: 40px;
-  background-color: $pagination-btn-gray;
-  padding: 10px !important;
-}
-.tui-prev-is-ellip,
-.tui-next-is-ellip {
-  padding: 6px !important;
-}
-
-.tui-is-selected {
-  background-color: $main-orange !important;
-  color: $main-white !important;
-  // border-color:
-}
-.tui-is-disabled,
-.page-1 {
-  display: none !important;
-}
-// .tui-is-disabled > .icon-arrow {
-//   stroke: $btn-disabled;
-// }
