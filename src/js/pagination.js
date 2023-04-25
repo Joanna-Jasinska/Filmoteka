@@ -73,11 +73,19 @@ export async function createPagination(data, site, query) {
       const nearLastNrBtn = document.querySelector(
         '.page-' + (getMaxPage(data.total_results, 20) - 1),
       );
-      if (nearLastNrBtn) {
-        document.querySelector('.tui-next-is-ellip').style.display = 'none';
+      const nextEllip = document.querySelector('.tui-next-is-ellip');
+      if (nextEllip && nearLastNrBtn) {
+        nextEllip.style.display = 'none';
+      } else {
+        if (nextEllip) nextEllip.style.display = 'inline-block';
       }
-      if (document.querySelector('.page-2'))
-        document.querySelector('.tui-prev-is-ellip').style.display = 'none';
+      const secondBtn = document.querySelector('.page-2');
+      const prevEllip = document.querySelector('.tui-prev-is-ellip');
+      if (prevEllip && secondBtn) {
+        prevEllip.style.display = 'none';
+      } else {
+        if (prevEllip) prevEllip.style.display = 'inline-block';
+      }
     });
   } catch (error) {
     console.error(error);
