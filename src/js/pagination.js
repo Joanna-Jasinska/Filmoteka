@@ -67,6 +67,18 @@ export async function createPagination(data, site, query) {
       const movie = await newPageResponse.json();
       displayMovies(movie.results);
     });
+    pagination.on('afterMove', async event => {
+      const lastBnt = document.querySelector('.page-' + getMaxPage(data.total_results, 20));
+      if (lastBnt) lastBnt.style.display = 'none';
+      const nearLastNrBtn = document.querySelector(
+        '.page-' + (getMaxPage(data.total_results, 20) - 1),
+      );
+      if (nearLastNrBtn) {
+        document.querySelector('.tui-next-is-ellip').style.display = 'none';
+      }
+      if (document.querySelector('.page-2'))
+        document.querySelector('.tui-prev-is-ellip').style.display = 'none';
+    });
   } catch (error) {
     console.error(error);
   }
