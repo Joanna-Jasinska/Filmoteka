@@ -16,8 +16,8 @@ export function removeModal() {
   refs.closeModal.removeEventListener('click', removeModal);
   window.removeEventListener('keydown', removeModalEsc);
   window.removeEventListener('click', removeModalBackdrop);
-  document.querySelector('.buttons-modal__watched').removeEventListener('click', addWatchedEvent); //jak wrzucałem odwołanie się do tego elemntu dom poprzez umiejscowienie tej liniki w refs to eventy nie chciały działać
-  document.querySelector('.buttons-modal__queue').removeEventListener('click', addQueueEvent);
+  document.querySelector('#watched-btn').removeEventListener('click', addWatchedEvent); //jak wrzucałem odwołanie się do tego elemntu dom poprzez umiejscowienie tej liniki w refs to eventy nie chciały działać
+  document.querySelector('#queue-btn').removeEventListener('click', addQueueEvent);
   refs.modal.innerHTML = '';
 }
 
@@ -33,7 +33,6 @@ function removeModalBackdrop(e) {
 }
 
 function addQueueEvent(e) {
-  console.log('dodano do queune');
   const data = localStorage.getItem('queue');
   let queue = JSON.parse(data);
   if (queue === null) {
@@ -43,13 +42,16 @@ function addQueueEvent(e) {
     queue = [movie];
   }
   if (queue.indexOf(e.target.dataset.id) != -1) {
+    let start = queue.indexOf(e.target.dataset.id);
+    queue.splice(start, 1);
+    localStorage.setItem('queue', JSON.stringify(queue));
   } else {
     queue.push(e.target.dataset.id);
     localStorage.setItem('queue', JSON.stringify(queue));
   }
+  checkMovie(e.target.dataset.id);
 }
 function addWatchedEvent(e) {
-  console.log('dodano do watched');
   const data = localStorage.getItem('watched');
   let watched = JSON.parse(data);
   if (watched === null) {
@@ -59,10 +61,47 @@ function addWatchedEvent(e) {
     watched = [movie];
   }
   if (watched.indexOf(e.target.dataset.id) != -1) {
+    let start = watched.indexOf(e.target.dataset.id);
+    watched.splice(start, 1);
+    localStorage.setItem('watched', JSON.stringify(watched));
   } else {
     watched.push(e.target.dataset.id);
     localStorage.setItem('watched', JSON.stringify(watched));
   }
+  checkMovie(e.target.dataset.id);
+}
+function checkMovie(id) {
+  const watchedButton = document.querySelector('#watched-btn');
+  const queueButton = document.querySelector('#queue-btn');
+  let queue = JSON.parse(localStorage.getItem('queue'));
+  let watched = JSON.parse(localStorage.getItem('watched'));
+  if (Array.isArray(queue) == true || queue == id) {
+    if (queue.indexOf(String(id)) != -1 || queue == id) {
+      // jest w local storage
+      queueButton.classList.add('buttons-modal__added');
+      queueButton.classList.remove('buttons-modal__add');
+      queueButton.innerHTML = 'DELETE FROM QUEUE';
+    } else {
+      queueButton.classList.remove('buttons-modal__added');
+      queueButton.classList.add('buttons-modal__add');
+      queueButton.innerHTML = 'ADD TO QUEUE';
+    }
+  }
+  if (Array.isArray(watched) == true || watched == id) {
+    console.log('ads');
+    if (watched.indexOf(String(id)) != -1 || watched == id) {
+      // jest w local storage
+      watchedButton.classList.add('buttons-modal__added');
+      watchedButton.classList.remove('buttons-modal__add');
+      watchedButton.innerHTML = 'DELETE FROM WATCHED';
+    } else {
+      console.log('ads');
+      watchedButton.classList.remove('buttons-modal__added');
+      watchedButton.classList.add('buttons-modal__add');
+      watchedButton.innerHTML = 'ADD TO WATCHED';
+    }
+  }
+  return;
 }
 
 export const fetchMovieById = async movie_id => {
@@ -116,16 +155,15 @@ export const renderModal = movie => {
   <h3 class="movie-details__about-title">ABOUT</h3>
   <p class="movie-details__overview">${movie.overview}</p>
   <div class="movie-details__buttons" buttons-modal>
-    <button data-id=${
+    <button id="watched-btn" data-id=${
       movie.id
-    } class="movie-details__button buttons-modal__watched">ADD TO WATCHED</button>
-    <button data-id=${
-      movie.id
-    } class="movie-details__button buttons-modal__queue">ADD TO QUEUE</button>
+    } class="movie-details__button">ADD TO WATCHED</button>
+    <button id="queue-btn" data-id=${movie.id} class="movie-details__button">ADD TO QUEUE</button>
   </div>
   </div>
 </div>`;
   refs.modal.innerHTML = modalMarkup;
-  document.querySelector('.buttons-modal__watched').addEventListener('click', addWatchedEvent);
-  document.querySelector('.buttons-modal__queue').addEventListener('click', addQueueEvent);
+  document.querySelector('#watched-btn').addEventListener('click', addWatchedEvent);
+  document.querySelector('#queue-btn').addEventListener('click', addQueueEvent);
+  checkMovie(movie.id);
 };
