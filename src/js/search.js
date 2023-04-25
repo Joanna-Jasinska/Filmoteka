@@ -10,7 +10,7 @@ async function searchMovies(query) {
   try {
     const response = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`);
     const data = await response.json();
-    createPagination(data, 'search',query); //dodane, żeby paginacja mogła się odpalić
+    createPagination(data, 'search', query); //dodane, żeby paginacja mogła się odpalić
     return data.results;
   } catch (error) {
     console.error(error);
@@ -71,10 +71,9 @@ async function searchWithDebounce(query, delay) {
         reject(error);
       }
     }, delay);
-  })
-    .finally(() => {
-      clearTimeout(timeoutId);
-    });
+  }).finally(() => {
+    clearTimeout(timeoutId);
+  });
 }
 
 let searchTimeoutId;
