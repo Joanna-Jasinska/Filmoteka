@@ -279,7 +279,7 @@
   }
 }
 
-.buttons-modal__watched {
+.buttons-modal__add {
   padding-inline: 26px;
   color: $main-white;
   background-color: $main-orange;
@@ -288,19 +288,19 @@
     padding-inline: 0px;
   }
 }
-.buttons-modal__queue {
+.buttons-modal__added {
   color: $main-black;
   border-color: $main-black;
   background-color: $main-white;
 }
-.buttons-modal__watched:hover,
-.buttons-modal__watched:focus {
+.buttons-modal__add:hover,
+.buttons-modal__add:focus {
   background-color: $orange-hover;
   border-color: $orange-hover;
   transform: scale(1.05);
 }
-.buttons-modal__queue:hover,
-.buttons-modal__queue:focus {
+.buttons-modal__added:hover,
+.buttons-modal__added:focus {
   color: $main-white;
   background-color: $orange-hover;
   border-color: $orange-hover;
