@@ -42,10 +42,12 @@ function displayMovies(movies, maxGenres = 2) {
         }" alt="${movie.title}" width="395" height="574"></div>
         <h2 class="movie-card__tittle">${movie.title}</h2>
         <p class="movie-card__info"> 
-        <span class="movie-card__overview">${genreText}</span> | <span class="movie-card__realease-date">${movie.release_date.slice(
+        <span class="movie-card__overview">${genreText}</span> | <span class="movie-card-library__realease-date">${movie.release_date.slice(
       0,
       4,
     )}
+    <span class="movie-card__rating">${movie.vote_average.toFixed(1)}</span>
+    </div>
     `;
     moviesContainer.insertAdjacentHTML('beforeend', movieCard);
   });
