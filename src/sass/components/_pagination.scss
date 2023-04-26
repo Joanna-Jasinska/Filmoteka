@@ -49,13 +49,17 @@
   }
   .tui-first {
     position: relative;
-    left: 44px;
-    padding: 7px !important;
+    padding: 6px !important;
+    @include tablet {
+      left: 44px;
+    }
   }
   .tui-last {
     position: relative;
-    left: -44px;
-    padding: 7px !important;
+    padding: 6px !important;
+    @include tablet {
+      left: -44px;
+    }
   }
   .tui-prev {
     position: relative;
@@ -89,7 +93,7 @@
     }
   }
   .tui-is-disabled,
-  .page-1 {
+  .tui-btn-disabled {
     display: none !important;
   }
   .tui-page-nr {

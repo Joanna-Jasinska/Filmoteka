@@ -28,37 +28,38 @@ export const fixPaginationBtnsOnWindowChange = () => {
   const tuiLast = document.querySelector('.tui-last');
   const tuiPrev = document.querySelector('.tui-prev');
   const tuiNext = document.querySelector('.tui-next');
-  if (lastBnt) lastBnt.classList.add('tui-is-disabled');
+  if (lastBnt) lastBnt.classList.add('tui-btn-disabled');
   if (isMobile) {
-    if (nextEllip) nextEllip.classList.remove('tui-is-disabled');
-    if (prevEllip) prevEllip.classList.remove('tui-is-disabled');
+    console.log('mobile. removing more pagination buttons');
+    if (nextEllip) nextEllip.classList.add('tui-btn-disabled');
+    if (prevEllip) prevEllip.classList.add('tui-btn-disabled');
 
     if (nearLastNrBtn) {
-      if (tuiLast) tuiLast.classList.remove('tui-is-disabled');
-      if (tuiNext) tuiNext.classList.add('tui-is-disabled');
+      if (tuiLast) tuiLast.classList.remove('tui-btn-disabled');
+      if (tuiNext) tuiNext.classList.add('tui-btn-disabled');
     } else {
-      if (tuiLast) tuiLast.classList.add('tui-is-disabled');
-      if (tuiNext) tuiNext.classList.remove('tui-is-disabled');
+      if (tuiLast) tuiLast.classList.add('tui-btn-disabled');
+      if (tuiNext) tuiNext.classList.remove('tui-btn-disabled');
     }
     if (secondBtn) {
-      if (tuiFirst) tuiFirst.classList.remove('tui-is-disabled');
-      if (tuiPrev) tuiPrev.classList.add('tui-is-disabled');
+      if (tuiFirst) tuiFirst.classList.remove('tui-btn-disabled');
+      if (tuiPrev) tuiPrev.classList.add('tui-btn-disabled');
     } else {
-      if (tuiFirst) tuiFirst.classList.add('tui-is-disabled');
-      if (tuiPrev) tuiPrev.classList.remove('tui-is-disabled');
+      if (tuiFirst) tuiFirst.classList.add('tui-btn-disabled');
+      if (tuiPrev) tuiPrev.classList.remove('tui-btn-disabled');
     }
   } else {
     // tablet/pc
 
     if (nextEllip && nearLastNrBtn) {
-      nextEllip.add('tui-is-disabled');
+      nextEllip.classList.add('tui-btn-disabled');
     } else {
-      if (nextEllip) nextEllip.remove('tui-is-disabled');
+      if (nextEllip) nextEllip.classList.remove('tui-btn-disabled');
     }
     if (prevEllip && secondBtn) {
-      prevEllip.add('tui-is-disabled');
+      prevEllip.classList.add('tui-btn-disabled');
     } else {
-      if (prevEllip) prevEllip.remove('tui-is-disabled');
+      if (prevEllip) prevEllip.classList.remove('tui-btn-disabled');
     }
   }
 };
