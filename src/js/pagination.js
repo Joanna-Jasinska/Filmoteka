@@ -16,33 +16,71 @@ const getMaxPage = (hits, perPage) => {
   return Math.min(pages, 500);
 };
 
+export const fixPaginationBtnsOnWindowChange = () => {
+  const isMobile = window.innerWidth < 768;
+  const lastBnt = document.querySelector('.page-last');
+  const nearLastNrBtn = document.querySelector('.page-near-last');
+
+  const nextEllip = document.querySelector('.tui-next-is-ellip');
+  const prevEllip = document.querySelector('.tui-prev-is-ellip');
+  const secondBtn = document.querySelector('.page-2');
+  const tuiFirst = document.querySelector('.tui-first');
+  const tuiLast = document.querySelector('.tui-last');
+  const tuiPrev = document.querySelector('.tui-prev');
+  const tuiNext = document.querySelector('.tui-next');
+  if (lastBnt) lastBnt.classList.add('tui-btn-disabled');
+  if (isMobile) {
+    console.log('mobile. removing more pagination buttons');
+    const selectedBtnP = document.querySelector('.tui-is-selected>p');
+    if (nextEllip) nextEllip.classList.add('tui-btn-disabled');
+    if (prevEllip) prevEllip.classList.add('tui-btn-disabled');
+    console.log(selectedBtnP);
+    if (nearLastNrBtn) {
+      if (tuiLast) tuiLast.classList.remove('tui-btn-disabled');
+      if (tuiNext) tuiNext.classList.add('tui-btn-disabled');
+    } else {
+      if (tuiLast) tuiLast.classList.add('tui-btn-disabled');
+      if (tuiNext) tuiNext.classList.remove('tui-btn-disabled');
+    }
+    if (secondBtn && selectedBtnP.innerHTML != '3') {
+      if (tuiFirst) tuiFirst.classList.remove('tui-btn-disabled');
+      if (tuiPrev) tuiPrev.classList.add('tui-btn-disabled');
+    } else {
+      if (tuiFirst) tuiFirst.classList.add('tui-btn-disabled');
+      if (tuiPrev) tuiPrev.classList.remove('tui-btn-disabled');
+    }
+  } else {
+    // tablet/pc
+    console.log('tablet/pc. adjusting pagination buttons');
+    if (tuiLast) tuiLast.classList.remove('tui-btn-disabled');
+    if (tuiFirst) tuiFirst.classList.remove('tui-btn-disabled');
+    if (tuiNext) tuiNext.classList.remove('tui-btn-disabled');
+    if (tuiPrev) tuiPrev.classList.remove('tui-btn-disabled');
+
+    if (nextEllip && nearLastNrBtn) {
+      nextEllip.classList.add('tui-btn-disabled');
+    } else {
+      if (nextEllip) nextEllip.classList.remove('tui-btn-disabled');
+    }
+    if (prevEllip && secondBtn) {
+      prevEllip.classList.add('tui-btn-disabled');
+    } else {
+      if (prevEllip) prevEllip.classList.remove('tui-btn-disabled');
+    }
+  }
+};
+
 const removeExcessPaginationBtns = data => {
   console.log('removeExcessPaginationBtns()');
-  const lastBnt = document.querySelector('.page-' + getMaxPage(data.total_results, 20));
-  if (lastBnt) lastBnt.style.display = 'none';
+  const oldPL = document.querySelector('.page-last');
+  const oldPNL = document.querySelector('.page-near-last');
+  if (oldPL) oldPL.classList.remove('page-last');
+  if (oldPNL) oldPNL.classList.remove('page-near-last');
   const nearLastNrBtn = document.querySelector('.page-' + (getMaxPage(data.total_results, 20) - 1));
-  const nextEllip = document.querySelector('.tui-next-is-ellip');
-  if (nextEllip && nearLastNrBtn) {
-    nextEllip.style.display = 'none';
-  } else {
-    if (nextEllip) nextEllip.style.display = 'inline-block';
-  }
-  const secondBtn = document.querySelector('.page-2');
-  const prevEllip = document.querySelector('.tui-prev-is-ellip');
-  if (prevEllip && secondBtn) {
-    prevEllip.style.display = 'none';
-  } else {
-    if (prevEllip) prevEllip.style.display = 'inline-block';
-  }
-  if (window.innerWidth < 768) {
-    console.log('mobile. removing more pagination buttons');
-    const tuiFirst = document.querySelector('.tui-first');
-    const tuiLast = document.querySelector('.tui-last');
-    if (prevEllip) prevEllip.classList.add('tui-is-disabled');
-    if (nextEllip) nextEllip.classList.add('tui-is-disabled');
-    if (tuiFirst) tuiFirst.classList.add('tui-is-disabled');
-    if (tuiLast) tuiLast.classList.add('tui-is-disabled');
-  }
+  if (nearLastNrBtn) nearLastNrBtn.classList.add('page-near-last');
+  const lastBnt = document.querySelector('.page-' + getMaxPage(data.total_results, 20));
+  if (lastBnt) lastBnt.classList.add('page-last');
+  fixPaginationBtnsOnWindowChange();
 };
 
 //funkcja inicjująca paginację z opcjami

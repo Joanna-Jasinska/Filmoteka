@@ -1,4 +1,6 @@
 import './js/library';
+import debounce from 'lodash/debounce';
+import { fixPaginationBtnsOnWindowChange } from './js/pagination';
 import { showWatched, showQueue } from './js/library';
 const queueButton = document.querySelector('#queue-button');
 const watchedButton = document.querySelector('#watched-button');
@@ -17,3 +19,4 @@ watchedButton.addEventListener('click', () => {
   showWatched();
 });
 showWatched();
+window.addEventListener('resize', debounce(fixPaginationBtnsOnWindowChange, 30));
