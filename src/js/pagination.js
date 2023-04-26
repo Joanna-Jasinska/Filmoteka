@@ -16,33 +16,64 @@ const getMaxPage = (hits, perPage) => {
   return Math.min(pages, 500);
 };
 
+export const fixPaginationBtnsOnWindowChange = () => {
+  const isMobile = window.innerWidth < 768;
+  const lastBnt = document.querySelector('.page-last');
+  const nearLastNrBtn = document.querySelector('.page-near-last');
+
+  const nextEllip = document.querySelector('.tui-next-is-ellip');
+  const prevEllip = document.querySelector('.tui-prev-is-ellip');
+  const secondBtn = document.querySelector('.page-2');
+  const tuiFirst = document.querySelector('.tui-first');
+  const tuiLast = document.querySelector('.tui-last');
+  const tuiPrev = document.querySelector('.tui-prev');
+  const tuiNext = document.querySelector('.tui-next');
+  if (lastBnt) lastBnt.classList.add('tui-is-disabled');
+  if (isMobile) {
+    if (nextEllip) nextEllip.classList.remove('tui-is-disabled');
+    if (prevEllip) prevEllip.classList.remove('tui-is-disabled');
+
+    if (nearLastNrBtn) {
+      if (tuiLast) tuiLast.classList.remove('tui-is-disabled');
+      if (tuiNext) tuiNext.classList.add('tui-is-disabled');
+    } else {
+      if (tuiLast) tuiLast.classList.add('tui-is-disabled');
+      if (tuiNext) tuiNext.classList.remove('tui-is-disabled');
+    }
+    if (secondBtn) {
+      if (tuiFirst) tuiFirst.classList.remove('tui-is-disabled');
+      if (tuiPrev) tuiPrev.classList.add('tui-is-disabled');
+    } else {
+      if (tuiFirst) tuiFirst.classList.add('tui-is-disabled');
+      if (tuiPrev) tuiPrev.classList.remove('tui-is-disabled');
+    }
+  } else {
+    // tablet/pc
+
+    if (nextEllip && nearLastNrBtn) {
+      nextEllip.add('tui-is-disabled');
+    } else {
+      if (nextEllip) nextEllip.remove('tui-is-disabled');
+    }
+    if (prevEllip && secondBtn) {
+      prevEllip.add('tui-is-disabled');
+    } else {
+      if (prevEllip) prevEllip.remove('tui-is-disabled');
+    }
+  }
+};
+
 const removeExcessPaginationBtns = data => {
   console.log('removeExcessPaginationBtns()');
-  const lastBnt = document.querySelector('.page-' + getMaxPage(data.total_results, 20));
-  if (lastBnt) lastBnt.style.display = 'none';
+  const oldPL = document.querySelector('.page-last');
+  const oldPNL = document.querySelector('.page-near-last');
+  if (oldPL) oldPL.classList.remove('page-last');
+  if (oldPNL) oldPNL.classList.remove('page-near-last');
   const nearLastNrBtn = document.querySelector('.page-' + (getMaxPage(data.total_results, 20) - 1));
-  const nextEllip = document.querySelector('.tui-next-is-ellip');
-  if (nextEllip && nearLastNrBtn) {
-    nextEllip.style.display = 'none';
-  } else {
-    if (nextEllip) nextEllip.style.display = 'inline-block';
-  }
-  const secondBtn = document.querySelector('.page-2');
-  const prevEllip = document.querySelector('.tui-prev-is-ellip');
-  if (prevEllip && secondBtn) {
-    prevEllip.style.display = 'none';
-  } else {
-    if (prevEllip) prevEllip.style.display = 'inline-block';
-  }
-  if (window.innerWidth < 768) {
-    console.log('mobile. removing more pagination buttons');
-    const tuiFirst = document.querySelector('.tui-first');
-    const tuiLast = document.querySelector('.tui-last');
-    if (prevEllip) prevEllip.classList.add('tui-is-disabled');
-    if (nextEllip) nextEllip.classList.add('tui-is-disabled');
-    if (tuiFirst) tuiFirst.classList.add('tui-is-disabled');
-    if (tuiLast) tuiLast.classList.add('tui-is-disabled');
-  }
+  if (nearLastNrBtn) nearLastNrBtn.classList.add('page-near-last');
+  const lastBnt = document.querySelector('.page-' + getMaxPage(data.total_results, 20));
+  if (lastBnt) lastBnt.classList.add('page-last');
+  fixPaginationBtnsOnWindowChange();
 };
 
 //funkcja inicjująca paginację z opcjami
