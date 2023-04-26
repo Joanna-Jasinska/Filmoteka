@@ -18,7 +18,7 @@ const getPageFirstIndex = (page = getCurrentPage(), itemsPerPage = 20) => {
 };
 const getPageLastIndex = (array, page = getCurrentPage(), itemsPerPage = 20) => {
   const maximumLastIndex = getPageFirstIndex(page) + itemsPerPage;
-  return Math.min(array.length - 1, maximumLastIndex);
+  return Math.min(array.length, maximumLastIndex);
   // if(page*itemsPerPage<=array.length)return page*itemsPerPage;
   // return (
   //   Math.max((page - 1) * itemsPerPage, 0) +
@@ -37,6 +37,9 @@ export async function showQueue(page = 1) {
   console.log(getLibraryPageMovieList(queueMovies));
   displayLibraryMovies(getLibraryPageMovieList(queueMovies, page));
   const libraryData = { total_results: queueMovies.length };
+  if (queueMovies.length > 3) {
+    document.querySelector('.footer').classList.remove('footer-library');
+  }
   if (page === 1) {
     createPagination(libraryData, 'library');
   }
@@ -47,6 +50,9 @@ export async function showWatched(page = 1) {
   let watchedMovies = await save(watchedIds);
   displayLibraryMovies(getLibraryPageMovieList(watchedMovies, page));
   const libraryData = { total_results: watchedMovies.length };
+  if (watchedMovies.length > 3) {
+    document.querySelector('.footer').classList.remove('footer-library');
+  }
   if (page === 1) {
     createPagination(libraryData, 'library');
   }

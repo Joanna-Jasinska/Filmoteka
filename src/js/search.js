@@ -32,7 +32,9 @@ export function displayMovies(movies, maxGenres = 2) {
     const displayedGenres =
       genreNames.length > maxGenres ? genreNames.slice(0, maxGenres).concat(['other']) : genreNames;
     const genreText = displayedGenres.join(', ');
-
+    if (movie.release_date === undefined) {
+      movie.release_date = 'none';
+    }
     const movieCard = `
       <div data-id=${movie.id} class="movie-card">
         <div class="movie-card__placeholder"><img class="movie-card__image"  src="https://image.tmdb.org/t/p/w500${
@@ -47,6 +49,9 @@ export function displayMovies(movies, maxGenres = 2) {
     `;
     moviesContainer.insertAdjacentHTML('beforeend', movieCard);
   });
+  if (movies.length < 3) {
+    document.querySelector('.footer').classList.add('footer-library');
+  }
   moviesContainer.addEventListener('click', e => {
     if (e.target.closest('.movie-card') === null) {
       return;
