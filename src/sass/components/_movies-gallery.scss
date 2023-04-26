@@ -30,7 +30,7 @@
     width: 394px;
   }
   @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-    url: ('https://image.tmdb.org/t/p/original${movie.poster_path}');
+    background-image: url('https://image.tmdb.org/t/p/original${movie.poster_path}');
   }
   &__placeholder {
     background-image: url('/src/images/coming_soon.jpg');

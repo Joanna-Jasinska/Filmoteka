@@ -35,37 +35,53 @@ export function displayMovies(movies, maxGenres = 2) {
     if (movie.release_date === undefined) {
       movie.release_date = 'none';
     }
-    const movieCard = `
+    const movieCard = () => {
+      if (window.devicePixelRatio >= 2) {
+        `
       <div data-id=${movie.id} class="movie-card">
-        <div class="movie-card__placeholder"><img class="movie-card__image"  src="https://image.tmdb.org/t/p/w500${
+        <div class="movie-card__placeholder"><img class="movie-card__image"  src="https://image.tmdb.org/t/p/original${
           movie.poster_path
-        }", "https://image.tmdb.org/t/p/original${movie.poster_path}" alt="${
-      movie.title
-    }" width="395" height="574"></div>
+        }" alt="${movie.title}" width="395" height="574"></div>
         <h2 class="movie-card__tittle">${movie.title}</h2>
         <p class="movie-card__info"> 
         <span class="movie-card__overview">${genreText}</span> | <span class="movie-card__realease-date">${movie.release_date.slice(
-      0,
-      4,
-    )}
+          0,
+          4,
+        )}
     `;
-    moviesContainer.insertAdjacentHTML('beforeend', movieCard);
-  });
-  if (movies.length < 3) {
-    document.querySelector('.footer').classList.add('footer-library');
-  }
-  moviesContainer.addEventListener('click', e => {
-    if (e.target.closest('.movie-card') === null) {
-      return;
+      } else {
+        `
+      <div data-id=${movie.id} class="movie-card">
+        <div class="movie-card__placeholder"><img class="movie-card__image"  src="https://image.tmdb.org/t/p/w500${
+          movie.poster_path
+        }"alt="${movie.title}" width="395" height="574"></div>
+        <h2 class="movie-card__tittle">${movie.title}</h2>
+        <p class="movie-card__info"> 
+        <span class="movie-card__overview">${genreText}</span> | <span class="movie-card__realease-date">${movie.release_date.slice(
+          0,
+          4,
+        )}
+    `;
+      }
+      moviesContainer.insertAdjacentHTML('beforeend', movieCard);
+    };
+    if (movies.length < 3) {
+      document.querySelector('.footer').classList.add('footer-library');
     }
-    showLoader();
-    showModal();
-    fetchMovieById(e.target.closest('.movie-card').dataset.id).then(movie => {
-      renderModal(movie);
-      removeLoader();
+    moviesContainer.addEventListener('click', e => {
+      if (e.target.closest('.movie-card') === null) {
+        return;
+      }
+      showLoader();
+      showModal();
+      fetchMovieById(e.target.closest('.movie-card').dataset.id).then(movie => {
+        renderModal(movie);
+        removeLoader();
+      });
     });
   });
 }
+
 async function searchWithDebounce(query, delay) {
   let timeoutId;
 
