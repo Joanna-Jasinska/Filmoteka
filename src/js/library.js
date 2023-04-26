@@ -8,24 +8,52 @@ import { createPagination } from './pagination';
 import { removeLoader, showLoader } from './loader.js';
 import { renderModal, showModal, fetchMovieById } from './modal.js';
 
-export async function showQueue() {
+const getCurrentPage = () => {
+  const currentPageBtn = document.querySelector('.tui-is-selected>.tui-page-nr');
+  return currentPageBtn ? parseInt(currentPageBtn.innerHTML) : 1;
+};
+const getPageFirstIndex = (page = getCurrentPage(), itemsPerPage = 20) => {
+  console.log('library page[' + page + '] first index: ' + Math.max((page - 1) * itemsPerPage, 0));
+  return Math.max((page - 1) * itemsPerPage, 0);
+};
+const getPageLastIndex = (array, page = getCurrentPage(), itemsPerPage = 20) => {
+  const maximumLastIndex = getPageFirstIndex(page) + itemsPerPage;
+  return Math.min(array.length - 1, maximumLastIndex);
+  // if(page*itemsPerPage<=array.length)return page*itemsPerPage;
+  // return (
+  //   Math.max((page - 1) * itemsPerPage, 0) +
+  //   (array.length % itemsPerPage > 0 ? array.length % itemsPerPage : itemsPerPage)
+  // );
+};
+const getLibraryPageMovieList = (array, page) => {
+  const moviePage = array.slice(getPageFirstIndex(page), getPageLastIndex(array, page));
+  console.log(moviePage);
+  return moviePage;
+};
+
+export async function showQueue(page = 1) {
   const queueIds = JSON.parse(localStorage.getItem('queue'));
   let queueMovies = await save(queueIds);
-  displayMovies(queueMovies);
+  console.log(getLibraryPageMovieList(queueMovies));
+  displayLibraryMovies(getLibraryPageMovieList(queueMovies, page));
   const libraryData = { total_results: queueMovies.length };
-  createPagination(libraryData, 'library');
+  if (page === 1) {
+    createPagination(libraryData, 'library');
+  }
   removeLoader();
 }
-export async function showWatched() {
+export async function showWatched(page = 1) {
   const watchedIds = JSON.parse(localStorage.getItem('watched'));
   let watchedMovies = await save(watchedIds);
-  displayMovies(watchedMovies);
+  displayLibraryMovies(getLibraryPageMovieList(watchedMovies, page));
   const libraryData = { total_results: watchedMovies.length };
-  createPagination(libraryData, 'library');
+  if (page === 1) {
+    createPagination(libraryData, 'library');
+  }
   removeLoader();
 }
 
-function displayMovies(movies, maxGenres = 2) {
+export function displayLibraryMovies(movies, maxGenres = 2) {
   const moviesContainer = document.querySelector('#library-gallery');
   moviesContainer.innerHTML = '';
   movies.forEach(async movie => {
@@ -74,3 +102,12 @@ async function save(tab) {
   );
   return moviesData;
 }
+
+export const refreshLibrary = (page = 1) => {
+  const watchedIsSelected = document.querySelector('#watched-button.header-button.is-active');
+  if (watchedIsSelected) {
+    showWatched(page);
+  } else {
+    showQueue(page);
+  }
+};
