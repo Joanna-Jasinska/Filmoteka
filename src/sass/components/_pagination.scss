@@ -49,29 +49,33 @@
   }
   .tui-first {
     padding: 7px !important;
-    @include tablet {
-      position: relative;
-      left: 44px;
-    }
+    position: relative;
   }
   .tui-last {
     padding: 7px !important;
+    position: relative;
+    left: 0px;
     @include tablet {
-      position: relative;
       left: -44px;
     }
   }
   .tui-prev {
     position: relative;
-    left: -40px;
     background-color: $pagination-btn-gray;
     padding: 10px !important;
+    left: 0px;
+    @include tablet {
+      left: -40px;
+    }
   }
   .tui-next {
     position: relative;
-    left: 40px;
     background-color: $pagination-btn-gray;
     padding: 10px !important;
+    left: 0px;
+    @include tablet {
+      left: 40px;
+    }
   }
   .tui-prev-is-ellip,
   .tui-next-is-ellip {
