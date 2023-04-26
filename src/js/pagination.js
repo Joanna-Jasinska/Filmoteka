@@ -51,7 +51,7 @@ export const fixPaginationBtnsOnWindowChange = () => {
     }
   } else {
     // tablet/pc
-    console.log('tablet/pc. adjusting pagination buttons');
+   
     if (tuiLast) tuiLast.classList.remove('tui-btn-disabled');
     if (tuiFirst) tuiFirst.classList.remove('tui-btn-disabled');
     if (tuiNext) tuiNext.classList.remove('tui-btn-disabled');
@@ -71,7 +71,7 @@ export const fixPaginationBtnsOnWindowChange = () => {
 };
 
 const removeExcessPaginationBtns = data => {
-  console.log('removeExcessPaginationBtns()');
+ 
   const oldPL = document.querySelector('.page-last');
   const oldPNL = document.querySelector('.page-near-last');
   if (oldPL) oldPL.classList.remove('page-last');
