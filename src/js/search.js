@@ -1,6 +1,6 @@
 import { showModal, fetchMovieById, renderModal } from './modal';
 import { showLoader, removeLoader } from './loader';
-import { createPagination, getData } from './pagination';
+import { createPagination } from './pagination';
 
 const API_KEY = '3453ae595a5d53cbc877c6d05de8a002';
 
@@ -52,16 +52,15 @@ export function displayMovies(movies, maxGenres = 2) {
   if (movies.length < 3) {
     document.querySelector('.footer').classList.add('footer-library');
   }
-  moviesContainer.addEventListener('click', e => {
+  moviesContainer.addEventListener('click', async e => {
     if (e.target.closest('.movie-card') === null) {
       return;
     }
     showLoader();
     showModal();
-    fetchMovieById(e.target.closest('.movie-card').dataset.id).then(movie => {
-      renderModal(movie);
-      removeLoader();
-    });
+    const movie = await fetchMovieById(e.target.closest('.movie-card').dataset.id);
+    renderModal(movie);
+    removeLoader();
   });
 }
 async function searchWithDebounce(query, delay) {
