@@ -39,7 +39,9 @@ export function displayMovies(movies, maxGenres = 2) {
       <div data-id=${movie.id} class="movie-card">
         <div class="movie-card__placeholder"><img class="movie-card__image"  src="https://image.tmdb.org/t/p/w500${
           movie.poster_path
-        }" alt="${movie.title}" width="395" height="574"></div>
+        }", "https://image.tmdb.org/t/p/original${movie.poster_path}" alt="${
+      movie.title
+    }" width="395" height="574"></div>
         <h2 class="movie-card__tittle">${movie.title}</h2>
         <p class="movie-card__info"> 
         <span class="movie-card__overview">${genreText}</span> | <span class="movie-card__realease-date">${movie.release_date.slice(
