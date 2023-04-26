@@ -306,3 +306,7 @@
   border-color: $orange-hover;
   transform: scale(1.05);
 }
+
+.scroll {
+  overflow-y: auto;
+}
