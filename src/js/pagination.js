@@ -16,13 +16,34 @@ const getMaxPage = (hits, perPage) => {
   return Math.min(pages, 500);
 };
 
+const removeExcessPaginationBtns = data => {
+  console.log('removeExcessPaginationBtns()');
+  const lastBnt = document.querySelector('.page-' + getMaxPage(data.total_results, 20));
+  if (lastBnt) lastBnt.style.display = 'none';
+  const nearLastNrBtn = document.querySelector('.page-' + (getMaxPage(data.total_results, 20) - 1));
+  const nextEllip = document.querySelector('.tui-next-is-ellip');
+  if (nextEllip && nearLastNrBtn) {
+    nextEllip.style.display = 'none';
+  } else {
+    if (nextEllip) nextEllip.style.display = 'inline-block';
+  }
+  const secondBtn = document.querySelector('.page-2');
+  const prevEllip = document.querySelector('.tui-prev-is-ellip');
+  if (prevEllip && secondBtn) {
+    prevEllip.style.display = 'none';
+  } else {
+    if (prevEllip) prevEllip.style.display = 'inline-block';
+  }
+};
+
 //funkcja inicjująca paginację z opcjami
 export async function createPagination(data, site, query) {
   try {
+    const visiblePages = 5;
     const options = {
       totalItems: `${Math.min(10000, data.total_results)}`,
       itemsPerPage: 20,
-      visiblePages: 5,
+      visiblePages: visiblePages,
       page: 1,
       centerAlign: true,
       firstItemClassName: 'tui-first-child',
@@ -67,25 +88,9 @@ export async function createPagination(data, site, query) {
         displayMovies(movie.results);
       }
     });
+    removeExcessPaginationBtns(data);
     pagination.on('afterMove', async event => {
-      const lastBnt = document.querySelector('.page-' + getMaxPage(data.total_results, 20));
-      if (lastBnt) lastBnt.style.display = 'none';
-      const nearLastNrBtn = document.querySelector(
-        '.page-' + (getMaxPage(data.total_results, 20) - 1),
-      );
-      const nextEllip = document.querySelector('.tui-next-is-ellip');
-      if (nextEllip && nearLastNrBtn) {
-        nextEllip.style.display = 'none';
-      } else {
-        if (nextEllip) nextEllip.style.display = 'inline-block';
-      }
-      const secondBtn = document.querySelector('.page-2');
-      const prevEllip = document.querySelector('.tui-prev-is-ellip');
-      if (prevEllip && secondBtn) {
-        prevEllip.style.display = 'none';
-      } else {
-        if (prevEllip) prevEllip.style.display = 'inline-block';
-      }
+      removeExcessPaginationBtns(data);
     });
   } catch (error) {
     console.error(error);

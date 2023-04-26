@@ -17,7 +17,7 @@ const getPageFirstIndex = (page = getCurrentPage(), itemsPerPage = 20) => {
   return Math.max((page - 1) * itemsPerPage, 0);
 };
 const getPageLastIndex = (array, page = getCurrentPage(), itemsPerPage = 20) => {
-  const maximumLastIndex = getPageFirstIndex(page) + itemsPerPage - 1;
+  const maximumLastIndex = getPageFirstIndex(page) + itemsPerPage;
   return Math.min(array.length - 1, maximumLastIndex);
   // if(page*itemsPerPage<=array.length)return page*itemsPerPage;
   // return (
