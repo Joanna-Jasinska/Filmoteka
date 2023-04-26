@@ -18,11 +18,6 @@ const getPageFirstIndex = (page = getCurrentPage(), itemsPerPage = 20) => {
 const getPageLastIndex = (array, page = getCurrentPage(), itemsPerPage = 20) => {
   const maximumLastIndex = getPageFirstIndex(page) + itemsPerPage;
   return Math.min(array.length, maximumLastIndex);
-  // if(page*itemsPerPage<=array.length)return page*itemsPerPage;
-  // return (
-  //   Math.max((page - 1) * itemsPerPage, 0) +
-  //   (array.length % itemsPerPage > 0 ? array.length % itemsPerPage : itemsPerPage)
-  // );
 };
 const getLibraryPageMovieList = (array, page) => {
   const moviePage = array.slice(getPageFirstIndex(page), getPageLastIndex(array, page));

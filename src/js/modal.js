@@ -67,7 +67,6 @@ function checkMovie(id) {
   let watched = JSON.parse(localStorage.getItem('watched'));
   if (Array.isArray(queue) == true || queue == id) {
     if (queue.indexOf(String(id)) != -1 || queue == id) {
-      // jest w local storage
       queueButton.classList.add('buttons-modal__added');
       queueButton.classList.remove('buttons-modal__add');
       queueButton.innerHTML = 'DELETE FROM QUEUE';
@@ -79,7 +78,6 @@ function checkMovie(id) {
   }
   if (Array.isArray(watched) == true || watched == id) {
     if (watched.indexOf(String(id)) != -1 || watched == id) {
-      // jest w local storage
       watchedButton.classList.add('buttons-modal__added');
       watchedButton.classList.remove('buttons-modal__add');
       watchedButton.innerHTML = 'DELETE FROM WATCHED';
@@ -161,7 +159,7 @@ export function removeModal() {
   refs.closeModal.removeEventListener('click', removeModal);
   window.removeEventListener('keydown', removeModalEsc);
   window.removeEventListener('click', removeModalBackdrop);
-  document.querySelector('#watched-btn').removeEventListener('click', addWatchedEvent); //jak wrzucałem odwołanie się do tego elemntu dom poprzez umiejscowienie tej liniki w refs to eventy nie chciały działać
+  document.querySelector('#watched-btn').removeEventListener('click', addWatchedEvent);
   document.querySelector('#queue-btn').removeEventListener('click', addQueueEvent);
   refs.modal.innerHTML = '';
   document.body.style.overflow = 'auto';
