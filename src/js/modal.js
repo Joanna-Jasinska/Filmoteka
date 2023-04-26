@@ -14,28 +14,6 @@ export function showModal() {
   document.body.style.overflow = 'hidden';
 }
 
-export function removeModal() {
-  refs.backdrop.classList.add('is-hidden');
-  refs.closeModal.removeEventListener('click', removeModal);
-  window.removeEventListener('keydown', removeModalEsc);
-  window.removeEventListener('click', removeModalBackdrop);
-  // document.querySelector('#watched-btn').removeEventListener('click', addWatchedEvent); //jak wrzucałem odwołanie się do tego elemntu dom poprzez umiejscowienie tej liniki w refs to eventy nie chciały działać
-  // document.querySelector('#queue-btn').removeEventListener('click', addQueueEvent);
-  refs.modal.innerHTML = '';
-  document.body.style.overflow = 'auto';
-}
-
-function removeModalEsc(e) {
-  if (e.key === 'Escape') {
-    removeModal();
-  }
-}
-function removeModalBackdrop(e) {
-  if (e.target === refs.backdrop) {
-    removeModal();
-  }
-}
-
 function addQueueEvent(e) {
   const data = localStorage.getItem('queue');
   const queueButton = document.querySelector('#queue-button');
@@ -177,3 +155,25 @@ export const renderModal = movie => {
   document.querySelector('#queue-btn').addEventListener('click', addQueueEvent);
   checkMovie(movie.id);
 };
+
+export function removeModal() {
+  refs.backdrop.classList.add('is-hidden');
+  refs.closeModal.removeEventListener('click', removeModal);
+  window.removeEventListener('keydown', removeModalEsc);
+  window.removeEventListener('click', removeModalBackdrop);
+  document.querySelector('#watched-btn').removeEventListener('click', addWatchedEvent); //jak wrzucałem odwołanie się do tego elemntu dom poprzez umiejscowienie tej liniki w refs to eventy nie chciały działać
+  document.querySelector('#queue-btn').removeEventListener('click', addQueueEvent);
+  refs.modal.innerHTML = '';
+  document.body.style.overflow = 'auto';
+}
+
+function removeModalEsc(e) {
+  if (e.key === 'Escape') {
+    removeModal();
+  }
+}
+function removeModalBackdrop(e) {
+  if (e.target === refs.backdrop) {
+    removeModal();
+  }
+}
