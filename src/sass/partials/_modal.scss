@@ -301,8 +301,8 @@
 }
 .buttons-modal__added:hover,
 .buttons-modal__added:focus {
-  color: $main-white;
-  background-color: $orange-hover;
-  border-color: $orange-hover;
+  color: $main-black;
+  background-color: $gray-hover;
+  border-color: $main-black;
   transform: scale(1.05);
 }

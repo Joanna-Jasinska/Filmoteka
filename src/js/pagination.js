@@ -1,7 +1,8 @@
 //import funkcji do wyświetlania filmów
-import { displayMovies } from './search';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
+import { displayMovies } from './search';
+import { refreshLibrary } from './library';
 
 //stałe
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -28,7 +29,8 @@ export async function createPagination(data, site, query) {
       lastItemClassName: 'tui-last-child',
       template: {
         page: '<button class="tui-page-btn page-{{page}}"><p class="tui-page-nr">{{page}}</p></a>',
-        currentPage: '<button class="tui-page-btn tui-is-selected"><p class="tui-page-nr">{{page}}</p></button>',
+        currentPage:
+          '<button class="tui-page-btn tui-is-selected"><p class="tui-page-nr">{{page}}</p></button>',
         moveButton:
           '<button class="tui-page-btn tui-{{type}}">' +
           `<div class="icon-arrow icon-arrow-{{type}} icon-arrow-1 ">${1}</div>` +
@@ -54,14 +56,16 @@ export async function createPagination(data, site, query) {
       if (site === 'popular') {
         newPageResponse = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&page=${page}`);
       } else if (site === 'library') {
-        newPageResponse = '';
+        refreshLibrary(page);
       } else {
         newPageResponse = await fetch(
           `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&page=${page}`,
         );
       }
-      const movie = await newPageResponse.json();
-      displayMovies(movie.results);
+      if (site != 'library') {
+        const movie = await newPageResponse.json();
+        displayMovies(movie.results);
+      }
     });
     pagination.on('afterMove', async event => {
       const lastBnt = document.querySelector('.page-' + getMaxPage(data.total_results, 20));
