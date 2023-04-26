@@ -53,12 +53,9 @@
     padding: 7px !important;
   }
   .tui-last {
-    padding: 7px !important;
     position: relative;
-    left: 0px;
-    @include tablet {
-      left: -44px;
-    }
+    left: -44px;
+    padding: 7px !important;
   }
   .tui-prev {
     position: relative;
