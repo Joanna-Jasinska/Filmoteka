@@ -51,7 +51,9 @@ export const fixPaginationBtnsOnWindowChange = () => {
     }
   } else {
     // tablet/pc
-
+    console.log('tablet/pc. adjusting pagination buttons');
+    if (tuiLast) tuiLast.classList.remove('tui-btn-disabled');
+    if (tuiFirst) tuiFirst.classList.remove('tui-btn-disabled');
     if (nextEllip && nearLastNrBtn) {
       nextEllip.classList.add('tui-btn-disabled');
     } else {
