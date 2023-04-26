@@ -37,7 +37,9 @@ export async function showQueue(page = 1) {
   console.log(getLibraryPageMovieList(queueMovies));
   displayLibraryMovies(getLibraryPageMovieList(queueMovies, page));
   const libraryData = { total_results: queueMovies.length };
-  createPagination(libraryData, 'library');
+  if (page === 1) {
+    createPagination(libraryData, 'library');
+  }
   removeLoader();
 }
 export async function showWatched(page = 1) {
@@ -45,7 +47,9 @@ export async function showWatched(page = 1) {
   let watchedMovies = await save(watchedIds);
   displayLibraryMovies(getLibraryPageMovieList(watchedMovies, page));
   const libraryData = { total_results: watchedMovies.length };
-  createPagination(libraryData, 'library');
+  if (page === 1) {
+    createPagination(libraryData, 'library');
+  }
   removeLoader();
 }
 
