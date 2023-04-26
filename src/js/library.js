@@ -85,17 +85,16 @@ export function displayLibraryMovies(movies, maxGenres = 2) {
     `;
     moviesContainer.insertAdjacentHTML('beforeend', movieCard);
   });
-  moviesContainer.addEventListener('click', e => {
+  moviesContainer.addEventListener('click', async e => {
     if (e.target.closest('.movie-card') === null) {
       return;
     }
     showLoader();
     showModal();
-    fetchMovieById(e.target.closest('.movie-card').dataset.id).then(movie => {
-      showModal(movie);
-      renderModal(movie);
-      removeLoader();
-    });
+    const movie = await fetchMovieById(e.target.closest('.movie-card').dataset.id);
+    showModal(movie);
+    renderModal(movie);
+    removeLoader();
   });
 }
 
