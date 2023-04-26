@@ -13,7 +13,6 @@ const getCurrentPage = () => {
   return currentPageBtn ? parseInt(currentPageBtn.innerHTML) : 1;
 };
 const getPageFirstIndex = (page = getCurrentPage(), itemsPerPage = 20) => {
-  console.log('library page[' + page + '] first index: ' + Math.max((page - 1) * itemsPerPage, 0));
   return Math.max((page - 1) * itemsPerPage, 0);
 };
 const getPageLastIndex = (array, page = getCurrentPage(), itemsPerPage = 20) => {
@@ -27,14 +26,12 @@ const getPageLastIndex = (array, page = getCurrentPage(), itemsPerPage = 20) => 
 };
 const getLibraryPageMovieList = (array, page) => {
   const moviePage = array.slice(getPageFirstIndex(page), getPageLastIndex(array, page));
-  console.log(moviePage);
   return moviePage;
 };
 
 export async function showQueue(page = 1) {
   const queueIds = JSON.parse(localStorage.getItem('queue'));
   let queueMovies = await save(queueIds);
-  console.log(getLibraryPageMovieList(queueMovies));
   displayLibraryMovies(getLibraryPageMovieList(queueMovies, page));
   const libraryData = { total_results: queueMovies.length };
   if (queueMovies.length > 3) {

@@ -30,11 +30,9 @@ export const fixPaginationBtnsOnWindowChange = () => {
   const tuiNext = document.querySelector('.tui-next');
   if (lastBnt) lastBnt.classList.add('tui-btn-disabled');
   if (isMobile) {
-    console.log('mobile. removing more pagination buttons');
     const selectedBtnP = document.querySelector('.tui-is-selected>p');
     if (nextEllip) nextEllip.classList.add('tui-btn-disabled');
     if (prevEllip) prevEllip.classList.add('tui-btn-disabled');
-    console.log(selectedBtnP);
     if (nearLastNrBtn) {
       if (tuiLast) tuiLast.classList.remove('tui-btn-disabled');
       if (tuiNext) tuiNext.classList.add('tui-btn-disabled');
@@ -51,7 +49,6 @@ export const fixPaginationBtnsOnWindowChange = () => {
     }
   } else {
     // tablet/pc
-    console.log('tablet/pc. adjusting pagination buttons');
     if (tuiLast) tuiLast.classList.remove('tui-btn-disabled');
     if (tuiFirst) tuiFirst.classList.remove('tui-btn-disabled');
     if (tuiNext) tuiNext.classList.remove('tui-btn-disabled');
@@ -71,7 +68,6 @@ export const fixPaginationBtnsOnWindowChange = () => {
 };
 
 const removeExcessPaginationBtns = data => {
-  console.log('removeExcessPaginationBtns()');
   const oldPL = document.querySelector('.page-last');
   const oldPNL = document.querySelector('.page-near-last');
   if (oldPL) oldPL.classList.remove('page-last');
