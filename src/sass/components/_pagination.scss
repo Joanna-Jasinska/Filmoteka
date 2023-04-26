@@ -39,11 +39,13 @@
     font-weight: 500 !important;
     width: 40px !important;
     height: 40px !important;
-    border: none !important;
+    border: 1px solid transparent !important;
     border-radius: 5px;
     padding: 7px !important;
     margin: 0 !important;
     background-color: white;
+    transition: 250ms;
+    cursor: pointer;
   }
   .tui-first {
     position: relative;
@@ -69,11 +71,16 @@
   }
   .tui-prev-is-ellip,
   .tui-next-is-ellip {
-    padding: 6px !important;
+    font-size: 12px !important;
   }
   .tui-is-selected {
     background-color: $main-orange !important;
     color: $main-white !important;
+    cursor: pointer !important;
+    &:hover {
+      box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.07),
+      0px 2px 2px rgb(0, 0, 0);
+    }
   }
   .tui-is-disabled,
   .page-1 {
@@ -84,4 +91,12 @@
     width: 100%;
     margin: 0;
   }
+  .tui-non-selected:hover {
+    background-color: white !important;
+    border: 1px solid $main-orange !important;
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.07),
+    0px 2px 2px rgba(255, 107, 8, 1);
+    }
 }
+
+

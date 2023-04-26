@@ -27,10 +27,10 @@ export async function createPagination(data, site, query) {
       firstItemClassName: 'tui-first-child',
       lastItemClassName: 'tui-last-child',
       template: {
-        page: '<button class="tui-page-btn page-{{page}}"><p class="tui-page-nr">{{page}}</p></a>',
+        page: '<button class="tui-page-btn tui-non-selected page-{{page}}"><p class="tui-page-nr">{{page}}</p></button>',
         currentPage: '<button class="tui-page-btn tui-is-selected"><p class="tui-page-nr">{{page}}</p></button>',
         moveButton:
-          '<button class="tui-page-btn tui-{{type}}">' +
+          '<button class="tui-page-btn tui-non-selected tui-{{type}}">' +
           `<div class="icon-arrow icon-arrow-{{type}} icon-arrow-1 ">${1}</div>` +
           `<div class="icon-arrow icon-arrow-{{type}} icon-arrow-hits">${getMaxPage(
             data.total_results,
@@ -42,9 +42,9 @@ export async function createPagination(data, site, query) {
           `<div class="icon-arrow icon-arrow-{{type}}"></div>` +
           '</span>',
         moreButton:
-          '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-          '<span class="tui-ico-ellip">...</span>' +
-          '</a>',
+          '<button class="tui-page-btn tui-non-selected tui-{{type}}-is-ellip">' +
+          '<p class="tui-page-nr">...</p>' +
+          '</button>',
       },
     };
     const pagination = new Pagination(paginationContainer, options);
