@@ -5,3 +5,14 @@ body {
   color: $main-white;
   font-weight: 400;
 }
+html {
+  position: relative;
+  min-height: 100%;
+}
+.tui-pagination {
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  bottom: 120px;
+  padding-block: 0px;
+}
