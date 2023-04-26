@@ -41,10 +41,11 @@
     height: 40px !important;
     border: 1px solid transparent !important;
     border-radius: 5px;
-    padding: 0 !important;
+    padding: 7px !important;
     margin: 0 !important;
     background-color: white;
     transition: 250ms;
+    cursor: pointer;
   }
   .tui-first {
     position: relative;
@@ -75,6 +76,7 @@
   .tui-is-selected {
     background-color: $main-orange !important;
     color: $main-white !important;
+    cursor: pointer !important;
     &:hover {
       box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.07),
       0px 2px 2px rgb(0, 0, 0);

@@ -12,15 +12,12 @@ const paginationContainer = document.querySelector('.tui-pagination');
 
 const getMaxPage = (hits, perPage) => {
   const pages = Math.ceil(hits / perPage);
-  // if (pages < 1000) return pages;
-  // return pages.toString().substring(0, 3) + '..';
   return Math.min(pages, 500);
 };
 
 //funkcja inicjująca paginację z opcjami
 export async function createPagination(data, site, query) {
   try {
-    console.log(data.total_results);
     const options = {
       totalItems: `${Math.min(10000, data.total_results)}`,
       itemsPerPage: 20,
@@ -42,7 +39,6 @@ export async function createPagination(data, site, query) {
           '</button>',
         disabledMoveButton:
           '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-          // '<span class="tui-ico-{{type}}">{{type}}</span>' +
           `<div class="icon-arrow icon-arrow-{{type}}"></div>` +
           '</span>',
         moreButton:

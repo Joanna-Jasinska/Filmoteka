@@ -105,6 +105,9 @@
     font-size: 12px;
     line-height: 14px;
     color: $main-white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     @include desktop {
       width: 40px;
       height: 20px;
