@@ -34,6 +34,17 @@ const removeExcessPaginationBtns = data => {
   } else {
     if (prevEllip) prevEllip.style.display = 'inline-block';
   }
+  if (window.innerWidth < 768) {
+    console.log('mobile. removing more pagination buttons');
+    const tuiFirst = document.querySelector('.tui-first');
+    const tuiLast = document.querySelector('.tui-last');
+    if (prevEllip) prevEllip.classList.add('tui-is-disabled');
+    if (nextEllip) nextEllip.classList.add('tui-is-disabled');
+    if (tuiFirst) tuiFirst.classList.add('tui-is-disabled');
+    if (tuiLast) tuiLast.classList.add('tui-is-disabled');
+  } else {
+    console.log(window.innerWidth);
+  }
 };
 
 //funkcja inicjująca paginację z opcjami
@@ -50,7 +61,8 @@ export async function createPagination(data, site, query) {
       lastItemClassName: 'tui-last-child',
       template: {
         page: '<button class="tui-page-btn tui-non-selected page-{{page}}"><p class="tui-page-nr">{{page}}</p></button>',
-        currentPage: '<button class="tui-page-btn tui-is-selected"><p class="tui-page-nr">{{page}}</p></button>',
+        currentPage:
+          '<button class="tui-page-btn tui-is-selected"><p class="tui-page-nr">{{page}}</p></button>',
         moveButton:
           '<button class="tui-page-btn tui-non-selected tui-{{type}}">' +
           `<div class="icon-arrow icon-arrow-{{type}} icon-arrow-1 ">${1}</div>` +
