@@ -47,6 +47,9 @@ export function displayMovies(movies, maxGenres = 2) {
     `;
     moviesContainer.insertAdjacentHTML('beforeend', movieCard);
   });
+  if (movies.length < 3) {
+    document.querySelector('.footer').classList.add('footer-library');
+  }
   moviesContainer.addEventListener('click', e => {
     if (e.target.closest('.movie-card') === null) {
       return;
