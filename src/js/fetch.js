@@ -1,5 +1,5 @@
 import { showLoader } from './loader';
-//fetching function
+
 export const fetchPopular = async () => {
   showLoader();
   const response = await fetch(
