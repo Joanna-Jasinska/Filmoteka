@@ -42,8 +42,6 @@ const removeExcessPaginationBtns = data => {
     if (nextEllip) nextEllip.classList.add('tui-is-disabled');
     if (tuiFirst) tuiFirst.classList.add('tui-is-disabled');
     if (tuiLast) tuiLast.classList.add('tui-is-disabled');
-  } else {
-    console.log(window.innerWidth);
   }
 };
 
