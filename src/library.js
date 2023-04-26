@@ -5,6 +5,7 @@ const watchedButton = document.querySelector('#watched-button');
 watchedButton.classList.add('is-active');
 const API_KEY = '3453ae595a5d53cbc877c6d05de8a002';
 const BASE_URL = 'https://api.themoviedb.org/3';
+document.querySelector('.footer').classList.add('footer-library');
 queueButton.addEventListener('click', () => {
   queueButton.classList.add('is-active');
   watchedButton.classList.remove('is-active');
