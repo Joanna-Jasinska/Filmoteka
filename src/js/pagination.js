@@ -56,6 +56,7 @@ export const fixPaginationBtnsOnWindowChange = () => {
     if (tuiFirst) tuiFirst.classList.remove('tui-btn-disabled');
     if (tuiNext) tuiNext.classList.remove('tui-btn-disabled');
     if (tuiPrev) tuiPrev.classList.remove('tui-btn-disabled');
+
     if (nextEllip && nearLastNrBtn) {
       nextEllip.classList.add('tui-btn-disabled');
     } else {
