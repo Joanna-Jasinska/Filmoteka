@@ -1,36 +1,17 @@
 import { showQueue, showWatched } from './library';
 const refs = {
   modal: document.querySelector('[data-modal]'),
-  openModal: document.querySelectorAll('[data-modal-open]'),
   closeModal: document.querySelector('[data-modal-close]'),
   backdrop: document.querySelector('.backdrop'),
 };
 
 export function showModal() {
   refs.backdrop.classList.remove('is-hidden');
+  refs.backdrop.classList.add('scroll');
   window.addEventListener('keydown', removeModalEsc);
   window.addEventListener('click', removeModalBackdrop);
   refs.closeModal.addEventListener('click', removeModal);
-}
-export function removeModal() {
-  refs.backdrop.classList.add('is-hidden');
-  refs.closeModal.removeEventListener('click', removeModal);
-  window.removeEventListener('keydown', removeModalEsc);
-  window.removeEventListener('click', removeModalBackdrop);
-  document.querySelector('#watched-btn').removeEventListener('click', addWatchedEvent); //jak wrzucałem odwołanie się do tego elemntu dom poprzez umiejscowienie tej liniki w refs to eventy nie chciały działać
-  document.querySelector('#queue-btn').removeEventListener('click', addQueueEvent);
-  refs.modal.innerHTML = '';
-}
-
-function removeModalEsc(e) {
-  if (e.key === 'Escape') {
-    removeModal();
-  }
-}
-function removeModalBackdrop(e) {
-  if (e.target === refs.backdrop) {
-    removeModal();
-  }
+  document.body.style.overflow = 'hidden';
 }
 
 function addQueueEvent(e) {
@@ -174,3 +155,25 @@ export const renderModal = movie => {
   document.querySelector('#queue-btn').addEventListener('click', addQueueEvent);
   checkMovie(movie.id);
 };
+
+export function removeModal() {
+  refs.backdrop.classList.add('is-hidden');
+  refs.closeModal.removeEventListener('click', removeModal);
+  window.removeEventListener('keydown', removeModalEsc);
+  window.removeEventListener('click', removeModalBackdrop);
+  document.querySelector('#watched-btn').removeEventListener('click', addWatchedEvent); //jak wrzucałem odwołanie się do tego elemntu dom poprzez umiejscowienie tej liniki w refs to eventy nie chciały działać
+  document.querySelector('#queue-btn').removeEventListener('click', addQueueEvent);
+  refs.modal.innerHTML = '';
+  document.body.style.overflow = 'auto';
+}
+
+function removeModalEsc(e) {
+  if (e.key === 'Escape') {
+    removeModal();
+  }
+}
+function removeModalBackdrop(e) {
+  if (e.target === refs.backdrop) {
+    removeModal();
+  }
+}

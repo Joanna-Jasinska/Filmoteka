@@ -306,3 +306,7 @@
   border-color: $main-black;
   transform: scale(1.05);
 }
+
+.scroll {
+  overflow-y: auto;
+}
