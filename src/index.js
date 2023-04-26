@@ -8,13 +8,12 @@ import './js/modal-devs';
 import { removeModal } from './js/modal';
 import { createPagination } from './js/pagination';
 
-
 fetchPopular()
   .then(popularMovies => {
     const movies = popularMovies.results;
     displayMovies(movies);
     createPagination(popularMovies, 'popular');
-    removeModal();
+    // removeModal();
   })
   .catch(error => console.error(error))
   .finally(() => {

@@ -161,8 +161,8 @@ export function removeModal() {
   refs.closeModal.removeEventListener('click', removeModal);
   window.removeEventListener('keydown', removeModalEsc);
   window.removeEventListener('click', removeModalBackdrop);
-  // document.querySelector('#watched-btn').removeEventListener('click', addWatchedEvent); //jak wrzucałem odwołanie się do tego elemntu dom poprzez umiejscowienie tej liniki w refs to eventy nie chciały działać
-  // document.querySelector('#queue-btn').removeEventListener('click', addQueueEvent);
+  document.querySelector('#watched-btn').removeEventListener('click', addWatchedEvent); //jak wrzucałem odwołanie się do tego elemntu dom poprzez umiejscowienie tej liniki w refs to eventy nie chciały działać
+  document.querySelector('#queue-btn').removeEventListener('click', addQueueEvent);
   refs.modal.innerHTML = '';
   document.body.style.overflow = 'auto';
 }
