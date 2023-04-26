@@ -1,14 +1,11 @@
-//import funkcji do wyświetlania filmów
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { displayMovies } from './search';
 import { refreshLibrary } from './library';
 
-//stałe
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = '964358699754c21d74c014b561cf196c';
 
-//kontener na paginatory
 const paginationContainer = document.querySelector('.tui-pagination');
 
 const getMaxPage = (hits, perPage) => {
@@ -48,7 +45,6 @@ export const fixPaginationBtnsOnWindowChange = () => {
       if (tuiPrev) tuiPrev.classList.remove('tui-btn-disabled');
     }
   } else {
-    // tablet/pc
     if (tuiLast) tuiLast.classList.remove('tui-btn-disabled');
     if (tuiFirst) tuiFirst.classList.remove('tui-btn-disabled');
     if (tuiNext) tuiNext.classList.remove('tui-btn-disabled');
@@ -79,7 +75,6 @@ const removeExcessPaginationBtns = data => {
   fixPaginationBtnsOnWindowChange();
 };
 
-//funkcja inicjująca paginację z opcjami
 export async function createPagination(data, site, query) {
   try {
     const visiblePages = 5;
